@@ -48,6 +48,7 @@ namespace HTMLNS
             DidntVote = new List<string>();
             ExcelRows = new List<string[]>();
             excel = new ExcelPackage();
+            output = "";
         }
         public CreateTable(string HTMLpath, string LOCALpath, string filesCriteria, string exPath, string _sessionName, string titleTable)
         {
@@ -65,9 +66,7 @@ namespace HTMLNS
             Refrained = new List<string>();
             DidntVote = new List<string>();
             ExcelRows = new List<string[]>();
-            ExcelRows = new List<string[]>();
             excel = new ExcelPackage();
-            Work();
         }
         public void FillFilesList()
         {
