@@ -14,9 +14,18 @@ namespace CouncilVouingResults
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CouncilVouingResults());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new CouncilVouingResults());
+            }
+            catch(Exception ex)
+            {
+                string mess = ex.Message + $". Time: {DateTime.Now}\n";
+                mess+=$"Call stack: {ex.StackTrace}";
+                MessageBox.Show(mess);
+            }
         }
     }
 }

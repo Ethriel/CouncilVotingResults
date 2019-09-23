@@ -129,7 +129,10 @@ namespace CouncilVouingResults
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                string mess = "";
+                mess = ex.Message + $". Time: {DateTime.Now}\n";
+                mess += $"Call stack: {ex.StackTrace}";
+                MessageBox.Show(mess);
             }
             MessageBox.Show("Success!");
             labOpenAfterRename.Visible = true;
