@@ -9,7 +9,6 @@ namespace CouncilVouingResults
     {
         TablesCreator TableWork;
         Renamer RenameWork;
-        public event FormClosedEventHandler FormClose;
 
         public CouncilVouingResults()
         {

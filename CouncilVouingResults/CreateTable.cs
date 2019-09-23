@@ -204,7 +204,15 @@ namespace HTMLNS
             }
             output += end;
             string year = criteria.Substring(0, 4);
-            string fullPath = pathLOCAL + "\\OUT\\" + criteria + ".html";
+
+            string OutDirPath = "";
+            if(!new DirectoryInfo(pathLOCAL + "\\OUT\\").Exists)
+            {
+                OutDirPath = pathLOCAL + "\\OUT\\";
+                Directory.CreateDirectory(OutDirPath);
+            }
+           
+            string fullPath = OutDirPath + criteria + ".html";
             File.WriteAllText(fullPath, output);
         }
         public void FillForExcel()
