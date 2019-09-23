@@ -44,6 +44,7 @@
             this.vabCriteriaVote = new System.Windows.Forms.Label();
             this.labLocPathVote = new System.Windows.Forms.Label();
             this.textCriteriaVote = new System.Windows.Forms.TextBox();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // labSelectedPathXLSX
@@ -65,6 +66,7 @@
             this.butSlectPathXLSX.Text = "Select folder";
             this.butSlectPathXLSX.UseVisualStyleBackColor = true;
             this.butSlectPathXLSX.Visible = false;
+            this.butSlectPathXLSX.Click += new System.EventHandler(this.butSlectPathXLSX_Click);
             // 
             // labPathToXLSX
             // 
@@ -85,6 +87,7 @@
             this.butSetSessionNameVote.Text = "Set Name";
             this.butSetSessionNameVote.UseVisualStyleBackColor = true;
             this.butSetSessionNameVote.Visible = false;
+            this.butSetSessionNameVote.Click += new System.EventHandler(this.butSetSessionNameVote_Click);
             // 
             // textSessionNameVote
             // 
@@ -123,6 +126,7 @@
             this.butSelectFolderVote.Text = "Select folder";
             this.butSelectFolderVote.UseVisualStyleBackColor = true;
             this.butSelectFolderVote.Visible = false;
+            this.butSelectFolderVote.Click += new System.EventHandler(this.butSelectFolderVote_Click);
             // 
             // setTableTitleVote
             // 
@@ -133,6 +137,7 @@
             this.setTableTitleVote.Text = "Set Title";
             this.setTableTitleVote.UseVisualStyleBackColor = true;
             this.setTableTitleVote.Visible = false;
+            this.setTableTitleVote.Click += new System.EventHandler(this.setTableTitleVote_Click);
             // 
             // textTableTitleVote
             // 
@@ -162,6 +167,7 @@
             this.butWorkVote.Text = "Start Table Creation";
             this.butWorkVote.UseVisualStyleBackColor = true;
             this.butWorkVote.Visible = false;
+            this.butWorkVote.Click += new System.EventHandler(this.butWorkVote_Click);
             // 
             // butSetCritVote
             // 
@@ -172,6 +178,7 @@
             this.butSetCritVote.Text = "Set Criteria";
             this.butSetCritVote.UseVisualStyleBackColor = true;
             this.butSetCritVote.Visible = false;
+            this.butSetCritVote.Click += new System.EventHandler(this.butSetCritVote_Click);
             // 
             // vabCriteriaVote
             // 
@@ -248,5 +255,6 @@
         private System.Windows.Forms.Label vabCriteriaVote;
         private System.Windows.Forms.Label labLocPathVote;
         private System.Windows.Forms.TextBox textCriteriaVote;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }

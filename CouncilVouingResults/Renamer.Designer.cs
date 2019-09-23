@@ -41,6 +41,7 @@
             this.butSelectPathRen = new System.Windows.Forms.Button();
             this.labLocPathRen = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.SuspendLayout();
             // 
             // labOpenAfterRename
@@ -62,6 +63,7 @@
             this.butOpenFolderAfterRename.Text = "Open folder";
             this.butOpenFolderAfterRename.UseVisualStyleBackColor = true;
             this.butOpenFolderAfterRename.Visible = false;
+            this.butOpenFolderAfterRename.Click += new System.EventHandler(this.butOpenFolderAfterRename_Click_1);
             // 
             // butWorkRen
             // 
@@ -72,6 +74,7 @@
             this.butWorkRen.Text = "Rename Files";
             this.butWorkRen.UseVisualStyleBackColor = true;
             this.butWorkRen.Visible = false;
+            this.butWorkRen.Click += new System.EventHandler(this.butWorkRen_Click_1);
             // 
             // butSetFileExt
             // 
@@ -82,6 +85,7 @@
             this.butSetFileExt.Text = "Set Ext";
             this.butSetFileExt.UseVisualStyleBackColor = true;
             this.butSetFileExt.Visible = false;
+            this.butSetFileExt.Click += new System.EventHandler(this.butSetFileExt_Click_1);
             // 
             // butSetCritRen
             // 
@@ -92,6 +96,7 @@
             this.butSetCritRen.Text = "Set Criteria";
             this.butSetCritRen.UseVisualStyleBackColor = true;
             this.butSetCritRen.Visible = false;
+            this.butSetCritRen.Click += new System.EventHandler(this.butSetCritRen_Click_1);
             // 
             // textFileExtRen
             // 
@@ -148,6 +153,7 @@
             this.butSelectPathRen.Text = "Select folder";
             this.butSelectPathRen.UseVisualStyleBackColor = true;
             this.butSelectPathRen.Visible = false;
+            this.butSelectPathRen.Click += new System.EventHandler(this.butSelectPathRen_Click_1);
             // 
             // labLocPathRen
             // 
@@ -207,5 +213,6 @@
         private System.Windows.Forms.Button butSelectPathRen;
         private System.Windows.Forms.Label labLocPathRen;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
