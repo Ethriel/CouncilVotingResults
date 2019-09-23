@@ -45,6 +45,7 @@
             this.labLocPathVote = new System.Windows.Forms.Label();
             this.textCriteriaVote = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.labTimePassed = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labSelectedPathXLSX
@@ -160,7 +161,7 @@
             // 
             // butWorkVote
             // 
-            this.butWorkVote.Location = new System.Drawing.Point(488, 118);
+            this.butWorkVote.Location = new System.Drawing.Point(488, 94);
             this.butWorkVote.Name = "butWorkVote";
             this.butWorkVote.Size = new System.Drawing.Size(113, 23);
             this.butWorkVote.TabIndex = 37;
@@ -209,11 +210,21 @@
             this.textCriteriaVote.TabIndex = 33;
             this.textCriteriaVote.Visible = false;
             // 
+            // labTimePassed
+            // 
+            this.labTimePassed.AutoSize = true;
+            this.labTimePassed.Location = new System.Drawing.Point(485, 135);
+            this.labTimePassed.Name = "labTimePassed";
+            this.labTimePassed.Size = new System.Drawing.Size(0, 13);
+            this.labTimePassed.TabIndex = 49;
+            this.labTimePassed.Visible = false;
+            // 
             // TablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(620, 157);
+            this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labSelectedPathXLSX);
             this.Controls.Add(this.butSlectPathXLSX);
             this.Controls.Add(this.labPathToXLSX);
@@ -257,5 +268,6 @@
         private System.Windows.Forms.Label labLocPathVote;
         private System.Windows.Forms.TextBox textCriteriaVote;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label labTimePassed;
     }
 }

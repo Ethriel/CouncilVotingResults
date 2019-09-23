@@ -12,6 +12,7 @@ namespace CouncilVouingResults
         string CriteriaRen;
         string FileExtRen;
         CouncilVouingResults BaseForm;
+
         public Renamer()
         {
             InitializeComponent();
@@ -60,6 +61,8 @@ namespace CouncilVouingResults
             textFileExtRen.Visible = false;
             butSetFileExt.Visible = false;
             butWorkRen.Visible = false;
+
+            labTimePassed.Visible = false;
         }
         private bool AllParamsOkRen()
         {
@@ -124,8 +127,15 @@ namespace CouncilVouingResults
         {
             try
             {
+                var Watch = Stopwatch.StartNew();
                 RenameWork.SetParams(LocPathRen, CriteriaRen, FileExtRen);
                 RenameWork.DoRename();
+                Watch.Stop();
+                labTimePassed.Visible = true;
+                labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
+                labOpenAfterRename.Visible = true;
+                butOpenFolderAfterRename.Visible = true;
+                MessageBox.Show("Success!");
             }
             catch (Exception ex)
             {
@@ -134,9 +144,8 @@ namespace CouncilVouingResults
                 mess += $"Call stack: {ex.StackTrace}";
                 MessageBox.Show(mess);
             }
-            MessageBox.Show("Success!");
-            labOpenAfterRename.Visible = true;
-            butOpenFolderAfterRename.Visible = true;
+            
+
         }
 
         private void Renamer_FormClosed(object sender, FormClosedEventArgs e)

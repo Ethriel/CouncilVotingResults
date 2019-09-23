@@ -42,6 +42,7 @@
             this.labLocPathRen = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.labTimePassed = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labOpenAfterRename
@@ -173,11 +174,21 @@
             this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 35;
             // 
+            // labTimePassed
+            // 
+            this.labTimePassed.AutoSize = true;
+            this.labTimePassed.Location = new System.Drawing.Point(19, 143);
+            this.labTimePassed.Name = "labTimePassed";
+            this.labTimePassed.Size = new System.Drawing.Size(0, 13);
+            this.labTimePassed.TabIndex = 48;
+            this.labTimePassed.Visible = false;
+            // 
             // Renamer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(370, 168);
+            this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labOpenAfterRename);
             this.Controls.Add(this.butOpenFolderAfterRename);
             this.Controls.Add(this.butWorkRen);
@@ -215,5 +226,6 @@
         private System.Windows.Forms.Label labLocPathRen;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Label labTimePassed;
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using HTMLNS;
 
@@ -76,6 +77,8 @@ namespace CouncilVouingResults
             butSlectPathXLSX.Visible = false;
             labPathToXLSX.Visible = false;
             labSelectedPathXLSX.Visible = false;
+
+            labTimePassed.Visible = false;
         }
 
 
@@ -168,8 +171,13 @@ namespace CouncilVouingResults
         {
             try
             {
+                var Watch = Stopwatch.StartNew();
                 TableWork.SetParams(LocPathVote, CriteriaVote, TitleVote, SessNameVote, PathToXLSX);
                 TableWork.Work();
+                Watch.Stop();
+                labTimePassed.Visible = true;
+                labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
+                MessageBox.Show("Success!");
             }
             catch (Exception ex)
             {
@@ -178,7 +186,7 @@ namespace CouncilVouingResults
                 mess += $"Call stack: {ex.StackTrace}";
                 MessageBox.Show(mess);
             }
-            MessageBox.Show("Success!");
+            
         }
 
         private void TablesCreator_FormClosed(object sender, FormClosedEventArgs e)

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.butCreateTables = new System.Windows.Forms.Button();
-            this.selectFolderDiag = new System.Windows.Forms.FolderBrowserDialog();
             this.butRename = new System.Windows.Forms.Button();
             this.butHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -81,7 +80,6 @@
 
         #endregion
         private System.Windows.Forms.Button butCreateTables;
-        private System.Windows.Forms.FolderBrowserDialog selectFolderDiag;
         private System.Windows.Forms.Button butRename;
         private System.Windows.Forms.Button butHelp;
     }
