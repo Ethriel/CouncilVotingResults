@@ -31,6 +31,7 @@
             this.butSetParamsVote = new System.Windows.Forms.Button();
             this.selectFolderDiag = new System.Windows.Forms.FolderBrowserDialog();
             this.butRename = new System.Windows.Forms.Button();
+            this.butHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // butSetParamsVote
@@ -53,11 +54,23 @@
             this.butRename.UseVisualStyleBackColor = true;
             this.butRename.Click += new System.EventHandler(this.button1_Click_1);
             // 
+            // butHelp
+            // 
+            this.butHelp.Location = new System.Drawing.Point(344, 11);
+            this.butHelp.Name = "butHelp";
+            this.butHelp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.butHelp.Size = new System.Drawing.Size(75, 23);
+            this.butHelp.TabIndex = 19;
+            this.butHelp.Text = "Help";
+            this.butHelp.UseVisualStyleBackColor = true;
+            this.butHelp.Click += new System.EventHandler(this.butHelp_Click);
+            // 
             // CouncilVouingResults
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(355, 50);
+            this.ClientSize = new System.Drawing.Size(433, 50);
+            this.Controls.Add(this.butHelp);
             this.Controls.Add(this.butRename);
             this.Controls.Add(this.butSetParamsVote);
             this.Name = "CouncilVouingResults";
@@ -70,6 +83,7 @@
         private System.Windows.Forms.Button butSetParamsVote;
         private System.Windows.Forms.FolderBrowserDialog selectFolderDiag;
         private System.Windows.Forms.Button butRename;
+        private System.Windows.Forms.Button butHelp;
     }
 }
 

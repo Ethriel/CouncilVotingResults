@@ -38,5 +38,10 @@ namespace CouncilVouingResults
                 Renamer = new Renamer();
             Renamer.Show();
         }
+
+        private void butHelp_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/Ethriel/ReNameIt/blob/master/README.md");
+        }
     }
 }
