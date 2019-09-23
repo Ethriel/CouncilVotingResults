@@ -232,6 +232,7 @@
             this.Controls.Add(this.textCriteriaVote);
             this.Name = "TablesCreator";
             this.Text = "TablesCreator";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TablesCreator_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

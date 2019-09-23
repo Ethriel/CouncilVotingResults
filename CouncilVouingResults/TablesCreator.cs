@@ -6,7 +6,8 @@ namespace CouncilVouingResults
 {
     public partial class TablesCreator : Form
     {
-        CreateTable tableWork;
+        CreateTable TableWork;
+        CouncilVouingResults BaseForm;
         string LocPathVote;
         string CriteriaVote;
         string SessNameVote;
@@ -16,8 +17,17 @@ namespace CouncilVouingResults
         public TablesCreator()
         {
             InitializeComponent();
-            tableWork = new CreateTable();
+            TableWork = new CreateTable();
             MakeVisibleTable();
+            BaseForm = new CouncilVouingResults();
+        }
+
+        public TablesCreator(CouncilVouingResults e)
+        {
+            InitializeComponent();
+            TableWork = new CreateTable();
+            MakeVisibleTable();
+            BaseForm = e;
         }
 
         private void MakeVisibleTable()
@@ -158,14 +168,19 @@ namespace CouncilVouingResults
         {
             try
             {
-                tableWork.SetParams(LocPathVote, CriteriaVote, TitleVote, SessNameVote, PathToXLSX);
-                tableWork.Work();
+                TableWork.SetParams(LocPathVote, CriteriaVote, TitleVote, SessNameVote, PathToXLSX);
+                TableWork.Work();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             MessageBox.Show("Success!");
+        }
+
+        private void TablesCreator_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BaseForm.SetButtonCreateTable(true);
         }
     }
 }

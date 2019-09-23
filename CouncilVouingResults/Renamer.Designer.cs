@@ -193,6 +193,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Renamer";
             this.Text = "Renamer";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Renamer_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

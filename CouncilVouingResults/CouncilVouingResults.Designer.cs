@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.butSetParamsVote = new System.Windows.Forms.Button();
+            this.butCreateTables = new System.Windows.Forms.Button();
             this.selectFolderDiag = new System.Windows.Forms.FolderBrowserDialog();
             this.butRename = new System.Windows.Forms.Button();
             this.butHelp = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // butSetParamsVote
+            // butCreateTables
             // 
-            this.butSetParamsVote.Location = new System.Drawing.Point(12, 12);
-            this.butSetParamsVote.Name = "butSetParamsVote";
-            this.butSetParamsVote.Size = new System.Drawing.Size(180, 23);
-            this.butSetParamsVote.TabIndex = 1;
-            this.butSetParamsVote.Text = "Create HTML-table and XLSX-file";
-            this.butSetParamsVote.UseVisualStyleBackColor = true;
-            this.butSetParamsVote.Click += new System.EventHandler(this.button1_Click);
+            this.butCreateTables.Location = new System.Drawing.Point(12, 12);
+            this.butCreateTables.Name = "butCreateTables";
+            this.butCreateTables.Size = new System.Drawing.Size(180, 23);
+            this.butCreateTables.TabIndex = 1;
+            this.butCreateTables.Text = "Create HTML-table and XLSX-file";
+            this.butCreateTables.UseVisualStyleBackColor = true;
+            this.butCreateTables.Click += new System.EventHandler(this.button1_Click);
             // 
             // butRename
             // 
@@ -72,7 +72,7 @@
             this.ClientSize = new System.Drawing.Size(433, 50);
             this.Controls.Add(this.butHelp);
             this.Controls.Add(this.butRename);
-            this.Controls.Add(this.butSetParamsVote);
+            this.Controls.Add(this.butCreateTables);
             this.Name = "CouncilVouingResults";
             this.Text = "CouncilVouingResults";
             this.ResumeLayout(false);
@@ -80,7 +80,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button butSetParamsVote;
+        private System.Windows.Forms.Button butCreateTables;
         private System.Windows.Forms.FolderBrowserDialog selectFolderDiag;
         private System.Windows.Forms.Button butRename;
         private System.Windows.Forms.Button butHelp;

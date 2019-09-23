@@ -7,18 +7,25 @@ namespace CouncilVouingResults
 {
     public partial class Renamer : Form
     {
-        Rename rename;
+        Rename RenameWork;
         string LocPathRen;
         string CriteriaRen;
         string FileExtRen;
-
+        CouncilVouingResults BaseForm;
         public Renamer()
         {
             InitializeComponent();
-            rename = new Rename();
+            RenameWork = new Rename();
             MakeVisibleRen();
+            BaseForm = new CouncilVouingResults();
         }
-
+        public Renamer(CouncilVouingResults e)
+        {
+            InitializeComponent();
+            RenameWork = new Rename();
+            MakeVisibleRen();
+            BaseForm = e;
+        }
         private void MakeVisibleRen()
         {
             labLocPathRen.Visible = true;
@@ -117,8 +124,8 @@ namespace CouncilVouingResults
         {
             try
             {
-                rename.SetParams(LocPathRen, CriteriaRen, FileExtRen);
-                rename.DoRename();
+                RenameWork.SetParams(LocPathRen, CriteriaRen, FileExtRen);
+                RenameWork.DoRename();
             }
             catch (Exception ex)
             {
@@ -127,6 +134,11 @@ namespace CouncilVouingResults
             MessageBox.Show("Success!");
             labOpenAfterRename.Visible = true;
             butOpenFolderAfterRename.Visible = true;
+        }
+
+        private void Renamer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BaseForm.SetButtonRenamer(true);
         }
     }
 }

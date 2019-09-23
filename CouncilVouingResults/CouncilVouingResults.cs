@@ -7,28 +7,61 @@ namespace CouncilVouingResults
 {
     public partial class CouncilVouingResults : Form
     {
-        TablesCreator TablesCreator;
-        Renamer Renamer;
+        TablesCreator TableWork;
+        Renamer RenameWork;
+        public event FormClosedEventHandler FormClose;
 
         public CouncilVouingResults()
         {
             InitializeComponent();
         }
 
+        public Button GetButtonRenamer()
+        {
+            return butRename;
+        }
+
+        public void SetButtonRenamer(bool Enabled)
+        {
+            butRename.Enabled = Enabled;
+        }
+
+        public Button GetButtonCreateTable()
+        {
+            return butCreateTables;
+        }
+
+        public void SetButtonCreateTable(bool Enable)
+        {
+            butCreateTables.Enabled = Enable;
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
-            var curr = TablesCreator;
-            if(curr == null)
-                TablesCreator = new TablesCreator();
-            TablesCreator.Show();
+            TableWork = new TablesCreator(this);
+            butCreateTables.Enabled = false;
+            try
+            {
+                TableWork.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            var curr = Renamer;
-            if (curr == null)
-                Renamer = new Renamer();
-            Renamer.Show();
+            RenameWork = new Renamer(this);
+            butRename.Enabled = false;
+            try
+            {
+                RenameWork.Show();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void butHelp_Click(object sender, EventArgs e)
