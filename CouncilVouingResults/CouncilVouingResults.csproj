@@ -52,6 +52,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BulkRename.cs" />
+    <Compile Include="BulkRenameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BulkRenameForm.Designer.cs">
+      <DependentUpon>BulkRenameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="CouncilVouingResults.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,14 +66,21 @@
       <DependentUpon>CouncilVouingResults.cs</DependentUpon>
     </Compile>
     <Compile Include="CreateTable.cs" />
-    <Compile Include="Rename.cs" />
+    <Compile Include="AddTextToNames.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renamer.cs">
+    <Compile Include="AddTextToFilesNames.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Renamer.Designer.cs">
-      <DependentUpon>Renamer.cs</DependentUpon>
+    <Compile Include="AddTextToFilesNames.Designer.cs">
+      <DependentUpon>AddTextToFilesNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReplaceSymb.cs" />
+    <Compile Include="ReplaceSymbForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReplaceSymbForm.Designer.cs">
+      <DependentUpon>ReplaceSymbForm.cs</DependentUpon>
     </Compile>
     <Compile Include="TablesCreator.cs">
       <SubType>Form</SubType>
@@ -74,6 +88,9 @@
     <Compile Include="TablesCreator.Designer.cs">
       <DependentUpon>TablesCreator.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BulkRenameForm.resx">
+      <DependentUpon>BulkRenameForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CouncilVouingResults.resx">
       <DependentUpon>CouncilVouingResults.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,8 +103,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Renamer.resx">
-      <DependentUpon>Renamer.cs</DependentUpon>
+    <EmbeddedResource Include="AddTextToFilesNames.resx">
+      <DependentUpon>AddTextToFilesNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReplaceSymbForm.resx">
+      <DependentUpon>ReplaceSymbForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TablesCreator.resx">
       <DependentUpon>TablesCreator.cs</DependentUpon>

@@ -31,16 +31,13 @@
             this.labSelectedPathXLSX = new System.Windows.Forms.Label();
             this.butSlectPathXLSX = new System.Windows.Forms.Button();
             this.labPathToXLSX = new System.Windows.Forms.Label();
-            this.butSetSessionNameVote = new System.Windows.Forms.Button();
             this.textSessionNameVote = new System.Windows.Forms.TextBox();
             this.labSessionNameVote = new System.Windows.Forms.Label();
             this.labPathVote = new System.Windows.Forms.Label();
             this.butSelectFolderVote = new System.Windows.Forms.Button();
-            this.setTableTitleVote = new System.Windows.Forms.Button();
             this.textTableTitleVote = new System.Windows.Forms.TextBox();
             this.labTableTitleVote = new System.Windows.Forms.Label();
             this.butWorkVote = new System.Windows.Forms.Button();
-            this.butSetCritVote = new System.Windows.Forms.Button();
             this.vabCriteriaVote = new System.Windows.Forms.Label();
             this.labLocPathVote = new System.Windows.Forms.Label();
             this.textCriteriaVote = new System.Windows.Forms.TextBox();
@@ -79,17 +76,6 @@
             this.labPathToXLSX.TabIndex = 46;
             this.labPathToXLSX.Text = "Path where XLSX file will be";
             this.labPathToXLSX.Visible = false;
-            // 
-            // butSetSessionNameVote
-            // 
-            this.butSetSessionNameVote.Location = new System.Drawing.Point(526, 9);
-            this.butSetSessionNameVote.Name = "butSetSessionNameVote";
-            this.butSetSessionNameVote.Size = new System.Drawing.Size(75, 23);
-            this.butSetSessionNameVote.TabIndex = 45;
-            this.butSetSessionNameVote.Text = "Set Name";
-            this.butSetSessionNameVote.UseVisualStyleBackColor = true;
-            this.butSetSessionNameVote.Visible = false;
-            this.butSetSessionNameVote.Click += new System.EventHandler(this.butSetSessionNameVote_Click);
             // 
             // textSessionNameVote
             // 
@@ -130,17 +116,6 @@
             this.butSelectFolderVote.Visible = false;
             this.butSelectFolderVote.Click += new System.EventHandler(this.butSelectFolderVote_Click);
             // 
-            // setTableTitleVote
-            // 
-            this.setTableTitleVote.Location = new System.Drawing.Point(526, 63);
-            this.setTableTitleVote.Name = "setTableTitleVote";
-            this.setTableTitleVote.Size = new System.Drawing.Size(75, 23);
-            this.setTableTitleVote.TabIndex = 40;
-            this.setTableTitleVote.Text = "Set Title";
-            this.setTableTitleVote.UseVisualStyleBackColor = true;
-            this.setTableTitleVote.Visible = false;
-            this.setTableTitleVote.Click += new System.EventHandler(this.setTableTitleVote_Click);
-            // 
             // textTableTitleVote
             // 
             this.textTableTitleVote.Location = new System.Drawing.Point(87, 63);
@@ -162,7 +137,7 @@
             // 
             // butWorkVote
             // 
-            this.butWorkVote.Location = new System.Drawing.Point(488, 94);
+            this.butWorkVote.Location = new System.Drawing.Point(488, 113);
             this.butWorkVote.Name = "butWorkVote";
             this.butWorkVote.Size = new System.Drawing.Size(113, 23);
             this.butWorkVote.TabIndex = 37;
@@ -170,17 +145,6 @@
             this.butWorkVote.UseVisualStyleBackColor = true;
             this.butWorkVote.Visible = false;
             this.butWorkVote.Click += new System.EventHandler(this.butWorkVote_Click);
-            // 
-            // butSetCritVote
-            // 
-            this.butSetCritVote.Location = new System.Drawing.Point(526, 35);
-            this.butSetCritVote.Name = "butSetCritVote";
-            this.butSetCritVote.Size = new System.Drawing.Size(75, 23);
-            this.butSetCritVote.TabIndex = 36;
-            this.butSetCritVote.Text = "Set Criteria";
-            this.butSetCritVote.UseVisualStyleBackColor = true;
-            this.butSetCritVote.Visible = false;
-            this.butSetCritVote.Click += new System.EventHandler(this.butSetCritVote_Click);
             // 
             // vabCriteriaVote
             // 
@@ -222,7 +186,7 @@
             // 
             // butSetParams
             // 
-            this.butSetParams.Location = new System.Drawing.Point(639, 34);
+            this.butSetParams.Location = new System.Drawing.Point(526, 35);
             this.butSetParams.Name = "butSetParams";
             this.butSetParams.Size = new System.Drawing.Size(75, 23);
             this.butSetParams.TabIndex = 50;
@@ -234,27 +198,24 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(742, 157);
+            this.ClientSize = new System.Drawing.Size(612, 157);
             this.Controls.Add(this.butSetParams);
             this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labSelectedPathXLSX);
             this.Controls.Add(this.butSlectPathXLSX);
             this.Controls.Add(this.labPathToXLSX);
-            this.Controls.Add(this.butSetSessionNameVote);
             this.Controls.Add(this.textSessionNameVote);
             this.Controls.Add(this.labSessionNameVote);
             this.Controls.Add(this.labPathVote);
             this.Controls.Add(this.butSelectFolderVote);
-            this.Controls.Add(this.setTableTitleVote);
             this.Controls.Add(this.textTableTitleVote);
             this.Controls.Add(this.labTableTitleVote);
             this.Controls.Add(this.butWorkVote);
-            this.Controls.Add(this.butSetCritVote);
             this.Controls.Add(this.vabCriteriaVote);
             this.Controls.Add(this.labLocPathVote);
             this.Controls.Add(this.textCriteriaVote);
             this.Name = "TablesCreator";
-            this.Text = "TablesCreator";
+            this.Text = "Tables Creator";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TablesCreator_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -266,16 +227,13 @@
         private System.Windows.Forms.Label labSelectedPathXLSX;
         private System.Windows.Forms.Button butSlectPathXLSX;
         private System.Windows.Forms.Label labPathToXLSX;
-        private System.Windows.Forms.Button butSetSessionNameVote;
         private System.Windows.Forms.TextBox textSessionNameVote;
         private System.Windows.Forms.Label labSessionNameVote;
         private System.Windows.Forms.Label labPathVote;
         private System.Windows.Forms.Button butSelectFolderVote;
-        private System.Windows.Forms.Button setTableTitleVote;
         private System.Windows.Forms.TextBox textTableTitleVote;
         private System.Windows.Forms.Label labTableTitleVote;
         private System.Windows.Forms.Button butWorkVote;
-        private System.Windows.Forms.Button butSetCritVote;
         private System.Windows.Forms.Label vabCriteriaVote;
         private System.Windows.Forms.Label labLocPathVote;
         private System.Windows.Forms.TextBox textCriteriaVote;

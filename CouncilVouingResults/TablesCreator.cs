@@ -36,15 +36,12 @@ namespace CouncilVouingResults
 
             vabCriteriaVote.Visible = true;
             textCriteriaVote.Visible = true;
-            butSetCritVote.Visible = true;
 
             labTableTitleVote.Visible = true;
             textTableTitleVote.Visible = true;
-            setTableTitleVote.Visible = true;
 
             labSessionNameVote.Visible = true;
             textSessionNameVote.Visible = true;
-            butSetSessionNameVote.Visible = true;
 
             butSlectPathXLSX.Visible = true;
             labPathToXLSX.Visible = true;
@@ -61,8 +58,6 @@ namespace CouncilVouingResults
                     labPathVote.Text = dialog.SelectedPath;
                 }
             }
-            if (AllParamsOkVote())
-                butWorkVote.Visible = true;
         }
 
         private void butSlectPathXLSX_Click(object sender, EventArgs e)
@@ -75,8 +70,6 @@ namespace CouncilVouingResults
                     labSelectedPathXLSX.Text = dialog.SelectedPath;
                 }
             }
-            if (AllParamsOkVote())
-                butWorkVote.Visible = true;
         }
 
         private void butWorkVote_Click(object sender, EventArgs e)
@@ -105,33 +98,12 @@ namespace CouncilVouingResults
 
         private void butSetParams_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(textSessionNameVote.Text))
+            if (!AllParamsOkVote())
             {
-                MessageBox.Show("EMPTY textbox in SESSION NAME");
+                MessageBox.Show("Some parameters are EMPTY");
                 return;
             }
-            if (string.IsNullOrWhiteSpace(textCriteriaVote.Text))
-            {
-                MessageBox.Show("EMPTY textbox in CRITERIA");
-                return;
-            }
-            if (string.IsNullOrWhiteSpace(textTableTitleVote.Text))
-            {
-                MessageBox.Show("EMPTY textbox in TABLE TITLE");
-                return;
-            }
-            if(string.IsNullOrWhiteSpace(LocPathVote))
-            {
-                MessageBox.Show("NO PATH SELECTED for LOCAL FILES");
-                return;
-            }
-            if(string.IsNullOrWhiteSpace(PathToXLSX))
-            {
-                MessageBox.Show("NO PATH SELECTED for XLSX FILE");
-                return;
-            }
-            if (AllParamsOkVote())
-                butWorkVote.Visible = true;
+            butWorkVote.Visible = true;
         }
 
         private bool AllParamsOkVote()

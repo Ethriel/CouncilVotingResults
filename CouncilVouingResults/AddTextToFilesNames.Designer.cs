@@ -1,6 +1,6 @@
 ﻿namespace CouncilVouingResults
 {
-    partial class Renamer
+    partial class AddTextToFilesNames
     {
         /// <summary>
         /// Required designer variable.
@@ -47,7 +47,7 @@
             // labOpenAfterRename
             // 
             this.labOpenAfterRename.AutoSize = true;
-            this.labOpenAfterRename.Location = new System.Drawing.Point(150, 112);
+            this.labOpenAfterRename.Location = new System.Drawing.Point(169, 112);
             this.labOpenAfterRename.Name = "labOpenAfterRename";
             this.labOpenAfterRename.Size = new System.Drawing.Size(59, 13);
             this.labOpenAfterRename.TabIndex = 47;
@@ -69,9 +69,9 @@
             // 
             this.butWorkRen.Location = new System.Drawing.Point(19, 107);
             this.butWorkRen.Name = "butWorkRen";
-            this.butWorkRen.Size = new System.Drawing.Size(93, 23);
+            this.butWorkRen.Size = new System.Drawing.Size(68, 23);
             this.butWorkRen.TabIndex = 45;
-            this.butWorkRen.Text = "Rename Files";
+            this.butWorkRen.Text = "Start";
             this.butWorkRen.UseVisualStyleBackColor = true;
             this.butWorkRen.Visible = false;
             this.butWorkRen.Click += new System.EventHandler(this.butWorkRen_Click_1);
@@ -136,7 +136,7 @@
             // labLocPathRen
             // 
             this.labLocPathRen.AutoSize = true;
-            this.labLocPathRen.Location = new System.Drawing.Point(16, 72);
+            this.labLocPathRen.Location = new System.Drawing.Point(16, 77);
             this.labLocPathRen.Name = "labLocPathRen";
             this.labLocPathRen.Size = new System.Drawing.Size(58, 13);
             this.labLocPathRen.TabIndex = 36;
@@ -170,7 +170,7 @@
             this.butSetTextParams.UseVisualStyleBackColor = true;
             this.butSetTextParams.Click += new System.EventHandler(this.butSetTextParams_Click);
             // 
-            // Renamer
+            // AddTextToFilesNames
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,8 +188,8 @@
             this.Controls.Add(this.butSelectPathRen);
             this.Controls.Add(this.labLocPathRen);
             this.Controls.Add(this.label1);
-            this.Name = "Renamer";
-            this.Text = "Renamer";
+            this.Name = "AddTextToFilesNames";
+            this.Text = "Add text to files names";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Renamer_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();

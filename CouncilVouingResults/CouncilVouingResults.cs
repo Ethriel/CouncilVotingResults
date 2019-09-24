@@ -2,27 +2,18 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 
-
 namespace CouncilVouingResults
 {
     public partial class CouncilVouingResults : Form
     {
         TablesCreator TableWork;
-        Renamer RenameWork;
+        AddTextToFilesNames AddTextToFilesWork;
+        BulkRenameForm BulkRenameWork;
+        ReplaceSymbForm ReplaceSymbWork;
 
         public CouncilVouingResults()
         {
             InitializeComponent();
-        }
-
-        public Button GetButtonRenamer()
-        {
-            return butRename;
-        }
-
-        public void SetButtonRenamer(bool Enabled)
-        {
-            butRename.Enabled = Enabled;
         }
 
         public Button GetButtonCreateTable()
@@ -33,6 +24,36 @@ namespace CouncilVouingResults
         public void SetButtonCreateTable(bool Enable)
         {
             butCreateTables.Enabled = Enable;
+        }
+
+        public Button GetButtonAddText()
+        {
+            return butAddText;
+        }
+
+        public void SetButtonAddText(bool Enabled)
+        {
+            butAddText.Enabled = Enabled;
+        }
+
+        public Button GetButtonBulkRename()
+        {
+            return butBulkRename;
+        }
+
+        public void SetButtonBulkRename(bool Enabled)
+        {
+            butBulkRename.Enabled = Enabled;
+        }
+
+        public Button GetButtonReplaceSymb()
+        {
+            return butReplaceSymb;
+        }
+
+        public void SetButtonReplaceSymb(bool Enable)
+        {
+            butReplaceSymb.Enabled = Enable;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -51,13 +72,41 @@ namespace CouncilVouingResults
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            RenameWork = new Renamer(this);
-            butRename.Enabled = false;
+            AddTextToFilesWork = new AddTextToFilesNames(this);
+            butAddText.Enabled = false;
             try
             {
-                RenameWork.Show();
+                AddTextToFilesWork.Show();
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void butBulkRename_Click(object sender, EventArgs e)
+        {
+            BulkRenameWork = new BulkRenameForm(this);
+            butBulkRename.Enabled = false;
+            try
+            {
+                BulkRenameWork.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void butReplaceSymb_Click(object sender, EventArgs e)
+        {
+            ReplaceSymbWork = new ReplaceSymbForm(this);
+            butReplaceSymb.Enabled = false;
+            try
+            {
+                ReplaceSymbWork.Show();
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

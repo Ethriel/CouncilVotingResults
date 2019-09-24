@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
-using RenameNS;
+using AddTextNS;
 
 namespace CouncilVouingResults
 {
-    public partial class Renamer : Form
+    public partial class AddTextToFilesNames : Form
     {
-        Rename RenameWork;
+        AddTextToNames RenameWork;
         string LocPathRen;
         CouncilVouingResults BaseForm;
 
-        public Renamer()
+        public AddTextToFilesNames()
         {
             InitializeComponent();
-            RenameWork = new Rename();
+            RenameWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = new CouncilVouingResults();
         }
-        public Renamer(CouncilVouingResults e)
+        public AddTextToFilesNames(CouncilVouingResults e)
         {
             InitializeComponent();
-            RenameWork = new Rename();
+            RenameWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = e;
         }
@@ -81,27 +81,16 @@ namespace CouncilVouingResults
 
         private void Renamer_FormClosed(object sender, FormClosedEventArgs e)
         {
-            BaseForm.SetButtonRenamer(true);
+            BaseForm.SetButtonAddText(true);
         }
 
         private void butSetTextParams_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(textCriteriaRen.Text))
+            if (!AllParamsOkRen())
             {
-                MessageBox.Show("EMPTY textbox in CRITERIA");
+                MessageBox.Show("Some parameters are EMPTY");
                 return;
             }
-            if (string.IsNullOrEmpty(textFileExtRen.Text))
-            {
-                MessageBox.Show("EMPTY textbox in FILE EXTESION");
-                return;
-            }
-            if (string.IsNullOrEmpty(LocPathRen))
-            {
-                MessageBox.Show("NO PATH SELECTED");
-                return;
-            }
-            if (AllParamsOkRen())
                 butWorkRen.Visible = true;
         }
 

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace RenameNS
+namespace AddTextNS
 {
-    class Rename
+    class AddTextToNames
     {
         string path;
         string criteria;
@@ -17,9 +17,9 @@ namespace RenameNS
             path = _path;
             criteria = _criteria;
             fileExt = _fileExt;
-            DoRename();
+            DoAddText();
         }
-        public void DoRename()
+        public void DoAddText()
         {
             string filepath = "";
             string newfilepath = "";
