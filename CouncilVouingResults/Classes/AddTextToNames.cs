@@ -21,6 +21,7 @@ namespace AddTextNS
         }
         public void DoAddText()
         {
+            FileExt = "." + FileExt;
             string filepath = "";
             string newfilepath = "";
             string notNum = "";

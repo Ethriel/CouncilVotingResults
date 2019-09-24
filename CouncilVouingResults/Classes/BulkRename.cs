@@ -44,6 +44,7 @@ namespace BulkRenameNS
 
         public void DoBulkRename()
         {
+            FileExt = "." + FileExt;
             string OldPath = "", NewPath = "", CurrFile = "";
             DirectoryInfo DirInf = new DirectoryInfo(LocalPath);
             FilesNames = DirInf.GetFiles("*" + FileExt).ToList();

@@ -24,7 +24,7 @@ namespace FolderValidatorNS
             if (IsExtensionValid(ext))
             {
                 DirectoryInfo DirInfo = new DirectoryInfo(path);
-                List<FileInfo> FilesInfo = DirInfo.GetFiles(path).ToList();
+                List<FileInfo> FilesInfo = DirInfo.GetFiles().ToList();
                 if (FilesInfo.Count == 0 || FilesInfo == null)
                     throw new Exception("Folder does not contain files with such extension");
             }
