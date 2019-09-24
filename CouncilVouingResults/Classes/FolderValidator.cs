@@ -15,21 +15,29 @@ namespace FolderValidatorNS
             return true;
         }
 
-        public static bool ValidateFolder(string ext, string path)
+        static bool ValidateFolder(string path)
         {
-            if(!Directory.Exists(path))
+            if (!Directory.Exists(path))
             {
                 throw new Exception("Folder does not exist");
             }
-            if (IsExtensionValid(ext))
+            return true;
+        }
+
+        public static bool Validate(string ext, string path)
+        {
+            if(ValidateFolder(path))
             {
-                DirectoryInfo DirInfo = new DirectoryInfo(path);
-                List<FileInfo> FilesInfo = DirInfo.GetFiles().ToList();
-                if (FilesInfo.Count == 0 || FilesInfo == null)
-                    throw new Exception("Folder does not contain files with such extension");
+                if (IsExtensionValid(ext))
+                {
+                    DirectoryInfo DirInfo = new DirectoryInfo(path);
+                    List<FileInfo> FilesInfo = DirInfo.GetFiles().ToList();
+                    if (FilesInfo.Count == 0 || FilesInfo == null)
+                        throw new Exception("Folder does not contain files with such extension");
+                }
+                else
+                    throw new Exception("Invalid extension: contains dot");
             }
-            else
-                throw new Exception("Invalid extension: contains dot");
             return true;
         }
     }

@@ -22,7 +22,7 @@ namespace BulkRenameNS
 
         public BulkRename(string path, string ext, string param)
         {
-            if(FolderValidator.ValidateFolder(ext, path))
+            if(FolderValidator.Validate(ext, path))
             {
                 FilesNames = new List<FileInfo>();
                 LocalPath = path;
@@ -33,7 +33,7 @@ namespace BulkRenameNS
 
         public void SetParams(string path, string ext, string param)
         {
-            if (FolderValidator.ValidateFolder(ext, path))
+            if (FolderValidator.Validate(ext, path))
             {
                 LocalPath = path;
                 FileExt = ext;

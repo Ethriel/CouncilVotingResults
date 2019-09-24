@@ -11,7 +11,7 @@ namespace AddTextNS
         string FileExt;
         public void SetParams(string path, string criteria, string fileExt)
         {
-            if(FolderValidator.ValidateFolder(fileExt, path))
+            if(FolderValidator.Validate(fileExt, path))
             {
                 Path = path;
                 Criteria = criteria;
