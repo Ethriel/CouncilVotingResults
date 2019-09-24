@@ -9,8 +9,6 @@ namespace CouncilVouingResults
     {
         Rename RenameWork;
         string LocPathRen;
-        string CriteriaRen;
-        string FileExtRen;
         CouncilVouingResults BaseForm;
 
         public Renamer()
@@ -35,63 +33,24 @@ namespace CouncilVouingResults
 
             labCriteriaRen.Visible = true;
             textCriteriaRen.Visible = true;
-            butSetCritRen.Visible = true;
 
             labFileExctRen.Visible = true;
             textFileExtRen.Visible = true;
-            butSetFileExt.Visible = true;
 
             labOpenAfterRename.Visible = false;
             butOpenFolderAfterRename.Visible = false;
-        }
-
-        private void MakeInvisibleRen()
-        {
-            butWorkRen.Visible = false;
-
-            labLocPathRen.Visible = false;
-            butSelectPathRen.Visible = false;
-            labPathRen.Visible = false;
-
-            labCriteriaRen.Visible = false;
-            textCriteriaRen.Visible = false;
-            butSetCritRen.Visible = false;
-
-            labFileExctRen.Visible = false;
-            textFileExtRen.Visible = false;
-            butSetFileExt.Visible = false;
-            butWorkRen.Visible = false;
-
-            labTimePassed.Visible = false;
-        }
-        private bool AllParamsOkRen()
-        {
-            return !(string.IsNullOrWhiteSpace(LocPathRen) || string.IsNullOrWhiteSpace(CriteriaRen) || string.IsNullOrWhiteSpace(FileExtRen));
-        }
-
-        private void MakeAllTextBoxesEmptyRen()
-        {
-            labPathRen.Text = "No path selected";
-            textCriteriaRen.Text = "";
-            textFileExtRen.Text = "";
-            LocPathRen = "";
-            CriteriaRen = "";
-            FileExtRen = "";
         }
 
         private void butSelectPathRen_Click_1(object sender, EventArgs e)
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
-                //dialog.SelectedPath = @"D:\Sesii\HTML";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     LocPathRen = dialog.SelectedPath;
                     labPathRen.Text = dialog.SelectedPath;
                 }
             }
-            if (AllParamsOkRen())
-                butWorkRen.Visible = true;
         }
 
         private void butOpenFolderAfterRename_Click_1(object sender, EventArgs e)
@@ -99,58 +58,56 @@ namespace CouncilVouingResults
             Process.Start(LocPathRen);
         }
 
-        private void butSetCritRen_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textCriteriaRen.Text))
-            {
-                MessageBox.Show("EMPTY textbox in CRITERIA");
-                return;
-            }
-            CriteriaRen = textCriteriaRen.Text;
-            if (AllParamsOkRen())
-                butWorkRen.Visible = true;
-        }
-
-        private void butSetFileExt_Click_1(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textFileExtRen.Text))
-            {
-                MessageBox.Show("EMPTY textbox in FILE EXTESION");
-                return;
-            }
-            FileExtRen = textFileExtRen.Text;
-            if (AllParamsOkRen())
-                butWorkRen.Visible = true;
-        }
-
         private void butWorkRen_Click_1(object sender, EventArgs e)
         {
             try
             {
                 var Watch = Stopwatch.StartNew();
-                RenameWork.SetParams(LocPathRen, CriteriaRen, FileExtRen);
-                RenameWork.DoRename();
+                RenameWork.SetParams(LocPathRen, textCriteriaRen.Text, textFileExtRen.Text);
                 Watch.Stop();
-                labTimePassed.Visible = true;
                 labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
+                MessageBox.Show("Success!");
+                labTimePassed.Visible = true;
                 labOpenAfterRename.Visible = true;
                 butOpenFolderAfterRename.Visible = true;
-                MessageBox.Show("Success!");
             }
             catch (Exception ex)
             {
-                string mess = "";
-                mess = ex.Message + $". Time: {DateTime.Now}\n";
+                string mess = ex.Message + $". Time: {DateTime.Now}\n";
                 mess += $"Call stack: {ex.StackTrace}";
                 MessageBox.Show(mess);
             }
-            
-
         }
 
         private void Renamer_FormClosed(object sender, FormClosedEventArgs e)
         {
             BaseForm.SetButtonRenamer(true);
+        }
+
+        private void butSetTextParams_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textCriteriaRen.Text))
+            {
+                MessageBox.Show("EMPTY textbox in CRITERIA");
+                return;
+            }
+            if (string.IsNullOrEmpty(textFileExtRen.Text))
+            {
+                MessageBox.Show("EMPTY textbox in FILE EXTESION");
+                return;
+            }
+            if (string.IsNullOrEmpty(LocPathRen))
+            {
+                MessageBox.Show("NO PATH SELECTED");
+                return;
+            }
+            if (AllParamsOkRen())
+                butWorkRen.Visible = true;
+        }
+
+        private bool AllParamsOkRen()
+        {
+            return !(string.IsNullOrEmpty(textCriteriaRen.Text) || string.IsNullOrEmpty(textFileExtRen.Text) || string.IsNullOrEmpty(LocPathRen));
         }
     }
 }

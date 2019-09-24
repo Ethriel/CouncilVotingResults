@@ -17,6 +17,7 @@ namespace RenameNS
             path = _path;
             criteria = _criteria;
             fileExt = _fileExt;
+            DoRename();
         }
         public void DoRename()
         {

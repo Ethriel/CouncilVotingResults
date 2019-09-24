@@ -46,6 +46,7 @@
             this.textCriteriaVote = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.labTimePassed = new System.Windows.Forms.Label();
+            this.butSetParams = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labSelectedPathXLSX
@@ -219,11 +220,22 @@
             this.labTimePassed.TabIndex = 49;
             this.labTimePassed.Visible = false;
             // 
+            // butSetParams
+            // 
+            this.butSetParams.Location = new System.Drawing.Point(639, 34);
+            this.butSetParams.Name = "butSetParams";
+            this.butSetParams.Size = new System.Drawing.Size(75, 23);
+            this.butSetParams.TabIndex = 50;
+            this.butSetParams.Text = "Set params";
+            this.butSetParams.UseVisualStyleBackColor = true;
+            this.butSetParams.Click += new System.EventHandler(this.butSetParams_Click);
+            // 
             // TablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(620, 157);
+            this.ClientSize = new System.Drawing.Size(742, 157);
+            this.Controls.Add(this.butSetParams);
             this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labSelectedPathXLSX);
             this.Controls.Add(this.butSlectPathXLSX);
@@ -269,5 +281,6 @@
         private System.Windows.Forms.TextBox textCriteriaVote;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label labTimePassed;
+        private System.Windows.Forms.Button butSetParams;
     }
 }

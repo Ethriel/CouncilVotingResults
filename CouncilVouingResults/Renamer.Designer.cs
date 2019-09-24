@@ -31,8 +31,6 @@
             this.labOpenAfterRename = new System.Windows.Forms.Label();
             this.butOpenFolderAfterRename = new System.Windows.Forms.Button();
             this.butWorkRen = new System.Windows.Forms.Button();
-            this.butSetFileExt = new System.Windows.Forms.Button();
-            this.butSetCritRen = new System.Windows.Forms.Button();
             this.textFileExtRen = new System.Windows.Forms.TextBox();
             this.labFileExctRen = new System.Windows.Forms.Label();
             this.textCriteriaRen = new System.Windows.Forms.TextBox();
@@ -43,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.labTimePassed = new System.Windows.Forms.Label();
+            this.butSetTextParams = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labOpenAfterRename
@@ -76,28 +75,6 @@
             this.butWorkRen.UseVisualStyleBackColor = true;
             this.butWorkRen.Visible = false;
             this.butWorkRen.Click += new System.EventHandler(this.butWorkRen_Click_1);
-            // 
-            // butSetFileExt
-            // 
-            this.butSetFileExt.Location = new System.Drawing.Point(234, 40);
-            this.butSetFileExt.Name = "butSetFileExt";
-            this.butSetFileExt.Size = new System.Drawing.Size(75, 23);
-            this.butSetFileExt.TabIndex = 44;
-            this.butSetFileExt.Text = "Set Ext";
-            this.butSetFileExt.UseVisualStyleBackColor = true;
-            this.butSetFileExt.Visible = false;
-            this.butSetFileExt.Click += new System.EventHandler(this.butSetFileExt_Click_1);
-            // 
-            // butSetCritRen
-            // 
-            this.butSetCritRen.Location = new System.Drawing.Point(234, 9);
-            this.butSetCritRen.Name = "butSetCritRen";
-            this.butSetCritRen.Size = new System.Drawing.Size(75, 23);
-            this.butSetCritRen.TabIndex = 43;
-            this.butSetCritRen.Text = "Set Criteria";
-            this.butSetCritRen.UseVisualStyleBackColor = true;
-            this.butSetCritRen.Visible = false;
-            this.butSetCritRen.Click += new System.EventHandler(this.butSetCritRen_Click_1);
             // 
             // textFileExtRen
             // 
@@ -183,17 +160,26 @@
             this.labTimePassed.TabIndex = 48;
             this.labTimePassed.Visible = false;
             // 
+            // butSetTextParams
+            // 
+            this.butSetTextParams.Location = new System.Drawing.Point(234, 25);
+            this.butSetTextParams.Name = "butSetTextParams";
+            this.butSetTextParams.Size = new System.Drawing.Size(75, 23);
+            this.butSetTextParams.TabIndex = 49;
+            this.butSetTextParams.Text = "Set params";
+            this.butSetTextParams.UseVisualStyleBackColor = true;
+            this.butSetTextParams.Click += new System.EventHandler(this.butSetTextParams_Click);
+            // 
             // Renamer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(370, 168);
+            this.ClientSize = new System.Drawing.Size(326, 140);
+            this.Controls.Add(this.butSetTextParams);
             this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labOpenAfterRename);
             this.Controls.Add(this.butOpenFolderAfterRename);
             this.Controls.Add(this.butWorkRen);
-            this.Controls.Add(this.butSetFileExt);
-            this.Controls.Add(this.butSetCritRen);
             this.Controls.Add(this.textFileExtRen);
             this.Controls.Add(this.labFileExctRen);
             this.Controls.Add(this.textCriteriaRen);
@@ -215,8 +201,6 @@
         private System.Windows.Forms.Label labOpenAfterRename;
         private System.Windows.Forms.Button butOpenFolderAfterRename;
         private System.Windows.Forms.Button butWorkRen;
-        private System.Windows.Forms.Button butSetFileExt;
-        private System.Windows.Forms.Button butSetCritRen;
         private System.Windows.Forms.TextBox textFileExtRen;
         private System.Windows.Forms.Label labFileExctRen;
         private System.Windows.Forms.TextBox textCriteriaRen;
@@ -227,5 +211,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label labTimePassed;
+        private System.Windows.Forms.Button butSetTextParams;
     }
 }

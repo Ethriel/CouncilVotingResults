@@ -36,6 +36,7 @@ namespace HTMLNS
             pathLOCAL = LOCALpath;
             criteria = filesCriteria;
             sheetName = nameSheet;
+            Work();
         }
         public CreateTable()
         {

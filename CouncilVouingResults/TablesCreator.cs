@@ -10,9 +10,6 @@ namespace CouncilVouingResults
         CreateTable TableWork;
         CouncilVouingResults BaseForm;
         string LocPathVote;
-        string CriteriaVote;
-        string SessNameVote;
-        string TitleVote;
         string PathToXLSX;
 
         public TablesCreator()
@@ -54,58 +51,10 @@ namespace CouncilVouingResults
             labSelectedPathXLSX.Visible = true;
         }
 
-        private void MakeInvisibleTable()
-        {
-            butWorkVote.Visible = false;
-
-            labLocPathVote.Visible = false;
-            butSelectFolderVote.Visible = false;
-            labPathVote.Visible = false;
-
-            vabCriteriaVote.Visible = false;
-            textCriteriaVote.Visible = false;
-            butSetCritVote.Visible = false;
-
-            labTableTitleVote.Visible = false;
-            textTableTitleVote.Visible = false;
-            setTableTitleVote.Visible = false;
-
-            labSessionNameVote.Visible = false;
-            textSessionNameVote.Visible = false;
-            butSetSessionNameVote.Visible = false;
-
-            butSlectPathXLSX.Visible = false;
-            labPathToXLSX.Visible = false;
-            labSelectedPathXLSX.Visible = false;
-
-            labTimePassed.Visible = false;
-        }
-
-
-        private bool AllParamsOkVote()
-        {
-            return !(string.IsNullOrWhiteSpace(LocPathVote) || string.IsNullOrWhiteSpace(CriteriaVote) || string.IsNullOrWhiteSpace(SessNameVote)
-                || string.IsNullOrWhiteSpace(TitleVote) || string.IsNullOrWhiteSpace(PathToXLSX));
-        }
-
-        private void MakeAllTextBoxesEmptyVote()
-        {
-            labPathVote.Text = "No path selected";
-            textCriteriaVote.Text = "";
-            textSessionNameVote.Text = "";
-            textTableTitleVote.Text = "";
-            LocPathVote = "";
-            CriteriaVote = "";
-            SessNameVote = "";
-            TitleVote = "";
-            PathToXLSX = "";
-        }
-
         private void butSelectFolderVote_Click(object sender, EventArgs e)
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
-                //dialog.SelectedPath = @"D:\Sesii\HTML";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     LocPathVote = dialog.SelectedPath;
@@ -120,7 +69,6 @@ namespace CouncilVouingResults
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
-                //dialog.SelectedPath = @"D:\Sesii\HTML";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     PathToXLSX = dialog.SelectedPath;
@@ -131,67 +79,65 @@ namespace CouncilVouingResults
                 butWorkVote.Visible = true;
         }
 
-        private void butSetSessionNameVote_Click(object sender, EventArgs e)
+        private void butWorkVote_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var Watch = Stopwatch.StartNew();
+                TableWork.SetParams(LocPathVote, textCriteriaVote.Text, textTableTitleVote.Text, textSessionNameVote.Text, PathToXLSX);
+                Watch.Stop();
+                MessageBox.Show("Success!");
+                labTimePassed.Visible = true;
+                labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
+            }
+            catch (Exception ex)
+            {
+                string mess = ex.Message + $". Time: {DateTime.Now}\n";
+                mess += $"Call stack: {ex.StackTrace}";
+                MessageBox.Show(mess);
+            }
+        }
+
+        private void TablesCreator_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            BaseForm.SetButtonCreateTable(true);
+        }
+
+        private void butSetParams_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textSessionNameVote.Text))
             {
                 MessageBox.Show("EMPTY textbox in SESSION NAME");
                 return;
             }
-            SessNameVote = textSessionNameVote.Text;
-            if (AllParamsOkVote())
-                butWorkVote.Visible = true;
-        }
-
-        private void butSetCritVote_Click(object sender, EventArgs e)
-        {
             if (string.IsNullOrWhiteSpace(textCriteriaVote.Text))
             {
                 MessageBox.Show("EMPTY textbox in CRITERIA");
                 return;
             }
-            CriteriaVote = textCriteriaVote.Text;
-            if (AllParamsOkVote())
-                butWorkVote.Visible = true;
-        }
-
-        private void setTableTitleVote_Click(object sender, EventArgs e)
-        {
             if (string.IsNullOrWhiteSpace(textTableTitleVote.Text))
             {
-                MessageBox.Show("EMPTY textbox in TITLE");
+                MessageBox.Show("EMPTY textbox in TABLE TITLE");
                 return;
             }
-            TitleVote = textTableTitleVote.Text;
+            if(string.IsNullOrWhiteSpace(LocPathVote))
+            {
+                MessageBox.Show("NO PATH SELECTED for LOCAL FILES");
+                return;
+            }
+            if(string.IsNullOrWhiteSpace(PathToXLSX))
+            {
+                MessageBox.Show("NO PATH SELECTED for XLSX FILE");
+                return;
+            }
             if (AllParamsOkVote())
                 butWorkVote.Visible = true;
         }
 
-        private void butWorkVote_Click(object sender, EventArgs e)
+        private bool AllParamsOkVote()
         {
-            try
-            {
-                var Watch = Stopwatch.StartNew();
-                TableWork.SetParams(LocPathVote, CriteriaVote, TitleVote, SessNameVote, PathToXLSX);
-                TableWork.Work();
-                Watch.Stop();
-                labTimePassed.Visible = true;
-                labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
-                MessageBox.Show("Success!");
-            }
-            catch (Exception ex)
-            {
-                string mess = "";
-                mess = ex.Message + $". Time: {DateTime.Now}\n";
-                mess += $"Call stack: {ex.StackTrace}";
-                MessageBox.Show(mess);
-            }
-            
-        }
-
-        private void TablesCreator_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            BaseForm.SetButtonCreateTable(true);
+            return !(string.IsNullOrWhiteSpace(textSessionNameVote.Text) || string.IsNullOrWhiteSpace(textCriteriaVote.Text)
+                || string.IsNullOrWhiteSpace(textTableTitleVote.Text) || string.IsNullOrWhiteSpace(LocPathVote) || string.IsNullOrWhiteSpace(PathToXLSX));
         }
     }
 }
