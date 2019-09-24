@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.IO;
+using FolderValidatorNS;
 
 namespace BulkRenameNS
 {
@@ -21,18 +22,24 @@ namespace BulkRenameNS
 
         public BulkRename(string path, string ext, string param)
         {
-            FilesNames = new List<FileInfo>();
-            LocalPath = path;
-            FileExt = ext;
-            Param = param;
+            if(FolderValidator.ValidateFolder(ext, path))
+            {
+                FilesNames = new List<FileInfo>();
+                LocalPath = path;
+                FileExt = ext;
+                Param = param;
+            }
         }
 
         public void SetParams(string path, string ext, string param)
         {
-            LocalPath = path;
-            FileExt = ext;
-            Param = param;
-            DoBulkRename();
+            if (FolderValidator.ValidateFolder(ext, path))
+            {
+                LocalPath = path;
+                FileExt = ext;
+                Param = param;
+                DoBulkRename();
+            }
         }
 
         public void DoBulkRename()

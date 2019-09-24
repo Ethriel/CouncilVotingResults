@@ -52,46 +52,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BulkRename.cs" />
-    <Compile Include="BulkRenameForm.cs">
+    <Compile Include="Classes\BulkRename.cs" />
+    <Compile Include="Forms\BulkRenameForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BulkRenameForm.Designer.cs">
+    <Compile Include="Forms\BulkRenameForm.Designer.cs">
       <DependentUpon>BulkRenameForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="CouncilVouingResults.cs">
+    <Compile Include="Forms\CouncilVouingResults.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CouncilVouingResults.Designer.cs">
+    <Compile Include="Forms\CouncilVouingResults.Designer.cs">
       <DependentUpon>CouncilVouingResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="CreateTable.cs" />
-    <Compile Include="AddTextToNames.cs" />
+    <Compile Include="Classes\CreateTable.cs" />
+    <Compile Include="Classes\AddTextToNames.cs" />
+    <Compile Include="Classes\FolderValidator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AddTextToFilesNames.cs">
+    <Compile Include="Forms\AddTextToFilesNames.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddTextToFilesNames.Designer.cs">
+    <Compile Include="Forms\AddTextToFilesNames.Designer.cs">
       <DependentUpon>AddTextToFilesNames.cs</DependentUpon>
     </Compile>
-    <Compile Include="ReplaceSymb.cs" />
-    <Compile Include="ReplaceSymbForm.cs">
+    <Compile Include="Classes\ReplaceSymb.cs" />
+    <Compile Include="Forms\ReplaceSymbForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ReplaceSymbForm.Designer.cs">
+    <Compile Include="Forms\ReplaceSymbForm.Designer.cs">
       <DependentUpon>ReplaceSymbForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="TablesCreator.cs">
+    <Compile Include="Forms\TablesCreator.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TablesCreator.Designer.cs">
+    <Compile Include="Forms\TablesCreator.Designer.cs">
       <DependentUpon>TablesCreator.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BulkRenameForm.resx">
+    <EmbeddedResource Include="Forms\BulkRenameForm.resx">
       <DependentUpon>BulkRenameForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CouncilVouingResults.resx">
+    <EmbeddedResource Include="Forms\CouncilVouingResults.resx">
       <DependentUpon>CouncilVouingResults.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -103,13 +104,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddTextToFilesNames.resx">
+    <EmbeddedResource Include="Forms\AddTextToFilesNames.resx">
       <DependentUpon>AddTextToFilesNames.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ReplaceSymbForm.resx">
+    <EmbeddedResource Include="Forms\ReplaceSymbForm.resx">
       <DependentUpon>ReplaceSymbForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TablesCreator.resx">
+    <EmbeddedResource Include="Forms\TablesCreator.resx">
       <DependentUpon>TablesCreator.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
