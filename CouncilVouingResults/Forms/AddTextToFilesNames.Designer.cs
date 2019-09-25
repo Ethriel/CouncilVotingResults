@@ -191,6 +191,8 @@
             this.Name = "AddTextToFilesNames";
             this.Text = "Add text to files names";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Renamer_FormClosed);
+            this.Load += new System.EventHandler(this.AddTextToFilesNames_Load);
+            this.Resize += new System.EventHandler(this.AddTextToFilesNames_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

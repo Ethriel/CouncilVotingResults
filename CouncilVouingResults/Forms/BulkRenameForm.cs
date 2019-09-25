@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using BulkRenameNS;
 using System.Diagnostics;
+using CouncilVouingResults.Classes;
 
 namespace CouncilVouingResults
 {
@@ -17,17 +11,23 @@ namespace CouncilVouingResults
         string LocalPath;
         BulkRename BulkRenameWork;
         CouncilVouingResults BaseForm;
+        Resize FormResize;
+
         public BulkRenameForm()
         {
             InitializeComponent();
             BulkRenameWork = new BulkRename();
             BaseForm = new CouncilVouingResults();
+            FormResize = new Resize(this);
+            Load += new EventHandler(BulkRenameForm_Load);
         }
         public BulkRenameForm(CouncilVouingResults e)
         {
             InitializeComponent();
             BulkRenameWork = new BulkRename();
             BaseForm = e;
+            FormResize = new Resize(this);
+            Load += new EventHandler(BulkRenameForm_Load);
         }
 
         private void butSetParams_Click(object sender, EventArgs e)
@@ -80,6 +80,16 @@ namespace CouncilVouingResults
         private void BulkRenameForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             BaseForm.SetButtonBulkRename(true);
+        }
+
+        private void BulkRenameForm_Load(object sender, EventArgs e)
+        {
+            FormResize.GetInitialSize();
+        }
+
+        private void BulkRenameForm_Resize(object sender, EventArgs e)
+        {
+            FormResize.DoResize();
         }
     }
 }

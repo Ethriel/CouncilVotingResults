@@ -128,6 +128,8 @@
             this.Name = "ReplaceSymbForm";
             this.Text = "Replace Symb";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ReplaceSymbForm_FormClosed);
+            this.Load += new System.EventHandler(this.ReplaceSymbForm_Load);
+            this.Resize += new System.EventHandler(this.ReplaceSymbForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using ReplaceSymbNS;
 using System.Diagnostics;
+using CouncilVouingResults.Classes;
 
 namespace CouncilVouingResults
 {
@@ -9,7 +10,8 @@ namespace CouncilVouingResults
     {
         string LocalPath;
         CouncilVouingResults BaseForm;
-        ReplaceSymb ReplaceSymbWork; 
+        ReplaceSymb ReplaceSymbWork;
+        Resize FormResize;
 
         public ReplaceSymbForm()
         {
@@ -17,6 +19,8 @@ namespace CouncilVouingResults
             LocalPath = "";
             BaseForm = new CouncilVouingResults();
             ReplaceSymbWork = new ReplaceSymb();
+            FormResize = new Resize(this);
+            Load += new EventHandler(ReplaceSymbForm_Load);
         }
 
         public ReplaceSymbForm(CouncilVouingResults e)
@@ -25,6 +29,8 @@ namespace CouncilVouingResults
             LocalPath = "";
             BaseForm = e;
             ReplaceSymbWork = new ReplaceSymb();
+            FormResize = new Resize(this);
+            Load += new EventHandler(ReplaceSymbForm_Load);
         }
 
         private void butSetParams_Click(object sender, EventArgs e)
@@ -77,6 +83,16 @@ namespace CouncilVouingResults
         private void butShowResults_Click(object sender, EventArgs e)
         {
             Process.Start(LocalPath);
+        }
+
+        private void ReplaceSymbForm_Load(object sender, EventArgs e)
+        {
+            FormResize.GetInitialSize();
+        }
+
+        private void ReplaceSymbForm_Resize(object sender, EventArgs e)
+        {
+            FormResize.DoResize();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using CouncilVouingResults.Classes;
 
 namespace CouncilVouingResults
 {
@@ -10,10 +11,13 @@ namespace CouncilVouingResults
         AddTextToFilesNames AddTextToFilesWork;
         BulkRenameForm BulkRenameWork;
         ReplaceSymbForm ReplaceSymbWork;
+        Resize FormResize;
 
         public CouncilVouingResults()
         {
             InitializeComponent();
+            FormResize = new Resize(this);
+            Load += new EventHandler(CouncilVouingResults_Load);
         }
 
         public Button GetButtonCreateTable()
@@ -115,6 +119,16 @@ namespace CouncilVouingResults
         private void butHelp_Click(object sender, EventArgs e)
         {
             Process.Start("https://github.com/Ethriel/ReNameIt/blob/master/README.md");
+        }
+
+        private void CouncilVouingResults_Load(object sender, EventArgs e)
+        {
+            FormResize.GetInitialSize();
+        }
+
+        private void CouncilVouingResults_Resize(object sender, EventArgs e)
+        {
+            FormResize.DoResize();
         }
     }
 }

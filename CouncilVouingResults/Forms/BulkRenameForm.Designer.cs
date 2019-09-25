@@ -42,7 +42,7 @@
             // labFileExt
             // 
             this.labFileExt.AutoSize = true;
-            this.labFileExt.Location = new System.Drawing.Point(12, 9);
+            this.labFileExt.Location = new System.Drawing.Point(0, 12);
             this.labFileExt.Name = "labFileExt";
             this.labFileExt.Size = new System.Drawing.Size(76, 13);
             this.labFileExt.TabIndex = 0;
@@ -51,7 +51,7 @@
             // labReaplaceWord
             // 
             this.labReaplaceWord.AutoSize = true;
-            this.labReaplaceWord.Location = new System.Drawing.Point(12, 39);
+            this.labReaplaceWord.Location = new System.Drawing.Point(0, 39);
             this.labReaplaceWord.Name = "labReaplaceWord";
             this.labReaplaceWord.Size = new System.Drawing.Size(73, 13);
             this.labReaplaceWord.TabIndex = 1;
@@ -73,9 +73,9 @@
             // 
             // butSelectFolder
             // 
-            this.butSelectFolder.Location = new System.Drawing.Point(13, 66);
+            this.butSelectFolder.Location = new System.Drawing.Point(3, 68);
             this.butSelectFolder.Name = "butSelectFolder";
-            this.butSelectFolder.Size = new System.Drawing.Size(75, 23);
+            this.butSelectFolder.Size = new System.Drawing.Size(111, 23);
             this.butSelectFolder.TabIndex = 5;
             this.butSelectFolder.Text = "Select folder";
             this.butSelectFolder.UseVisualStyleBackColor = true;
@@ -83,7 +83,7 @@
             // 
             // butRename
             // 
-            this.butRename.Location = new System.Drawing.Point(106, 66);
+            this.butRename.Location = new System.Drawing.Point(244, 68);
             this.butRename.Name = "butRename";
             this.butRename.Size = new System.Drawing.Size(75, 23);
             this.butRename.TabIndex = 6;
@@ -94,9 +94,9 @@
             // 
             // butSetParams
             // 
-            this.butSetParams.Location = new System.Drawing.Point(212, 29);
+            this.butSetParams.Location = new System.Drawing.Point(212, 9);
             this.butSetParams.Name = "butSetParams";
-            this.butSetParams.Size = new System.Drawing.Size(75, 23);
+            this.butSetParams.Size = new System.Drawing.Size(107, 23);
             this.butSetParams.TabIndex = 7;
             this.butSetParams.Text = "Set params";
             this.butSetParams.UseVisualStyleBackColor = true;
@@ -104,9 +104,9 @@
             // 
             // butShowResults
             // 
-            this.butShowResults.Location = new System.Drawing.Point(212, 66);
+            this.butShowResults.Location = new System.Drawing.Point(212, 39);
             this.butShowResults.Name = "butShowResults";
-            this.butShowResults.Size = new System.Drawing.Size(75, 23);
+            this.butShowResults.Size = new System.Drawing.Size(107, 23);
             this.butShowResults.TabIndex = 8;
             this.butShowResults.Text = "Show results";
             this.butShowResults.UseVisualStyleBackColor = true;
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(331, 121);
+            this.ClientSize = new System.Drawing.Size(331, 100);
             this.Controls.Add(this.butShowResults);
             this.Controls.Add(this.butSetParams);
             this.Controls.Add(this.butRename);
@@ -129,6 +129,8 @@
             this.Name = "BulkRenameForm";
             this.Text = "Bulk Rename Files";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.BulkRenameForm_FormClosed);
+            this.Load += new System.EventHandler(this.BulkRenameForm_Load);
+            this.Resize += new System.EventHandler(this.BulkRenameForm_Resize);
             this.ResumeLayout(false);
             this.PerformLayout();
 

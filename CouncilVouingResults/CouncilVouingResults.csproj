@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BulkRename.cs" />
+    <Compile Include="Classes\Resize.cs" />
     <Compile Include="Forms\BulkRenameForm.cs">
       <SubType>Form</SubType>
     </Compile>

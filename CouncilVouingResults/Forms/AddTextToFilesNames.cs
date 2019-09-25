@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Forms;
 using AddTextNS;
+using CouncilVouingResults.Classes;
 
 namespace CouncilVouingResults
 {
@@ -10,6 +11,7 @@ namespace CouncilVouingResults
         AddTextToNames RenameWork;
         string LocPathRen;
         CouncilVouingResults BaseForm;
+        Resize FormResize;
 
         public AddTextToFilesNames()
         {
@@ -17,6 +19,9 @@ namespace CouncilVouingResults
             RenameWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = new CouncilVouingResults();
+            FormResize = new Resize(this);
+            Load += new EventHandler(AddTextToFilesNames_Load);
+
         }
         public AddTextToFilesNames(CouncilVouingResults e)
         {
@@ -24,6 +29,8 @@ namespace CouncilVouingResults
             RenameWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = e;
+            FormResize = new Resize(this);
+            Load += new EventHandler(AddTextToFilesNames_Load);
         }
         private void MakeVisibleRen()
         {
@@ -97,6 +104,16 @@ namespace CouncilVouingResults
         private bool AllParamsOkRen()
         {
             return !(string.IsNullOrEmpty(textCriteriaRen.Text) || string.IsNullOrEmpty(textFileExtRen.Text) || string.IsNullOrEmpty(LocPathRen));
+        }
+
+        private void AddTextToFilesNames_Load(object sender, EventArgs e)
+        {
+            FormResize.GetInitialSize();
+        }
+
+        private void AddTextToFilesNames_Resize(object sender, EventArgs e)
+        {
+            FormResize.DoResize();
         }
     }
 }

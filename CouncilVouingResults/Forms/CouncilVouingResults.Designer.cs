@@ -39,7 +39,7 @@
             // 
             this.butCreateTables.Location = new System.Drawing.Point(12, 12);
             this.butCreateTables.Name = "butCreateTables";
-            this.butCreateTables.Size = new System.Drawing.Size(180, 23);
+            this.butCreateTables.Size = new System.Drawing.Size(209, 23);
             this.butCreateTables.TabIndex = 1;
             this.butCreateTables.Text = "Create HTML-table and XLSX-file";
             this.butCreateTables.UseVisualStyleBackColor = true;
@@ -47,7 +47,7 @@
             // 
             // butAddText
             // 
-            this.butAddText.Location = new System.Drawing.Point(198, 12);
+            this.butAddText.Location = new System.Drawing.Point(227, 12);
             this.butAddText.Name = "butAddText";
             this.butAddText.Size = new System.Drawing.Size(159, 23);
             this.butAddText.TabIndex = 18;
@@ -57,7 +57,7 @@
             // 
             // butHelp
             // 
-            this.butHelp.Location = new System.Drawing.Point(282, 41);
+            this.butHelp.Location = new System.Drawing.Point(311, 41);
             this.butHelp.Name = "butHelp";
             this.butHelp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.butHelp.Size = new System.Drawing.Size(75, 23);
@@ -80,7 +80,7 @@
             // 
             this.butReplaceSymb.Location = new System.Drawing.Point(120, 41);
             this.butReplaceSymb.Name = "butReplaceSymb";
-            this.butReplaceSymb.Size = new System.Drawing.Size(156, 23);
+            this.butReplaceSymb.Size = new System.Drawing.Size(185, 23);
             this.butReplaceSymb.TabIndex = 21;
             this.butReplaceSymb.Text = "Replace symbol in files names";
             this.butReplaceSymb.UseVisualStyleBackColor = true;
@@ -90,7 +90,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(372, 73);
+            this.ClientSize = new System.Drawing.Size(398, 73);
             this.Controls.Add(this.butReplaceSymb);
             this.Controls.Add(this.butBulkRename);
             this.Controls.Add(this.butHelp);
@@ -98,6 +98,8 @@
             this.Controls.Add(this.butCreateTables);
             this.Name = "CouncilVouingResults";
             this.Text = "Council Vouing Results";
+            this.Load += new System.EventHandler(this.CouncilVouingResults_Load);
+            this.Resize += new System.EventHandler(this.CouncilVouingResults_Resize);
             this.ResumeLayout(false);
 
         }
