@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.779
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouncilVouingResults", "CouncilVouingResults\CouncilVouingResults.csproj", "{E18BEF1D-7B2C-4007-9FEE-D9CEF0C4C222}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CouncilVotingResults", "CouncilVouingResults\CouncilVotingResults.csproj", "{E18BEF1D-7B2C-4007-9FEE-D9CEF0C4C222}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
