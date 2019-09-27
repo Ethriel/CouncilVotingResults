@@ -188,9 +188,10 @@ namespace HTMLNS
         {
             string meta1 = "<html><head>\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">\n";
             string meta2 = "<meta name=Generator content=\"FastReport 4.0 http://www.fast-report.com\">\n</head>\n";
+            string style = "<link rel=\"stylesheet\" href=\"css/styles.css\"/>\n";
             string body = "<body bgcolor=\"#FFFFFF\" text=\"#000000\">\n";
             string table = "<table cellpadding=\"7\" border=\"0px\"><caption>" + "<b>" + tableTitle + "</b>" + "</caption>\n";
-            string start = meta1 + meta2 + body + table;
+            string start = meta1 + meta2 + style + body + table;
             string end = "</table>\n</body></html>";
             string currRow = "";
             string currName = "";
