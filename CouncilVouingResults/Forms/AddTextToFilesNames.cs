@@ -8,7 +8,7 @@ namespace CouncilVouingResults
 {
     public partial class AddTextToFilesNames : Form
     {
-        AddTextToNames RenameWork;
+        AddTextToNames AddTextWork;
         string LocPathRen;
         CouncilVouingResults BaseForm;
         Resize FormResize;
@@ -16,7 +16,7 @@ namespace CouncilVouingResults
         public AddTextToFilesNames()
         {
             InitializeComponent();
-            RenameWork = new AddTextToNames();
+            AddTextWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = new CouncilVouingResults();
             FormResize = new Resize(this);
@@ -26,7 +26,7 @@ namespace CouncilVouingResults
         public AddTextToFilesNames(CouncilVouingResults e)
         {
             InitializeComponent();
-            RenameWork = new AddTextToNames();
+            AddTextWork = new AddTextToNames();
             MakeVisibleRen();
             BaseForm = e;
             FormResize = new Resize(this);
@@ -38,8 +38,11 @@ namespace CouncilVouingResults
             butSelectPathRen.Visible = true;
             labPathRen.Visible = true;
 
-            labCriteriaRen.Visible = true;
-            textCriteriaRen.Visible = true;
+            labSession.Visible = true;
+            textSession.Visible = true;
+
+            labMeeting.Visible = true;
+            textMeeting.Visible = true;
 
             labFileExctRen.Visible = true;
             textFileExtRen.Visible = true;
@@ -70,7 +73,7 @@ namespace CouncilVouingResults
             try
             {
                 var Watch = Stopwatch.StartNew();
-                RenameWork.SetParams(LocPathRen, textCriteriaRen.Text, textFileExtRen.Text);
+                AddTextWork.SetParams(LocPathRen, textSession.Text, textMeeting.Text, textFileExtRen.Text);
                 Watch.Stop();
                 labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
                 MessageBox.Show("Success!");
@@ -103,7 +106,8 @@ namespace CouncilVouingResults
 
         private bool AllParamsOkRen()
         {
-            return !(string.IsNullOrEmpty(textCriteriaRen.Text) || string.IsNullOrEmpty(textFileExtRen.Text) || string.IsNullOrEmpty(LocPathRen));
+            return !(string.IsNullOrEmpty(textSession.Text) || string.IsNullOrEmpty(textFileExtRen.Text)
+                || string.IsNullOrEmpty(LocPathRen) || string.IsNullOrEmpty(textMeeting.Text));
         }
 
         private void AddTextToFilesNames_Load(object sender, EventArgs e)
