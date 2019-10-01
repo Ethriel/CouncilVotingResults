@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using FolderValidatorNS;
 
 namespace AddTextNS
@@ -30,10 +32,10 @@ namespace AddTextNS
             string notNum = "";
             string Date = "";
             DirectoryInfo di = new DirectoryInfo(Path);
-            FileInfo[] filesInfo = di.GetFiles("*"+FileExt);
+            List<FileInfo> filesInfo = di.GetFiles("*" + FileExt).ToList();
             Date = GetDateToString(filesInfo[0]);
             Criteria = Date + "_" + SessionNum + "_" + MeetingNum + "_";
-            for (int i = 0, j = 1; i < filesInfo.Length; i++)
+            for (int i = 0, j = 1; i < filesInfo.Count; i++)
             {
                 filepath = Path + "\\" + filesInfo[i].Name;
                 if (!char.IsDigit(filesInfo[i].Name[0]))

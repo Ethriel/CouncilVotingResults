@@ -9,8 +9,7 @@ namespace FolderValidatorNS
     {
         static bool IsExtensionValid(string ext)
         {
-            char dot = '.';
-            if (ext.Contains(dot))
+            if (ext.Contains('.'))
                 return false;
             return true;
         }

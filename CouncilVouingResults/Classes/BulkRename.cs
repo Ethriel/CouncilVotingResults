@@ -45,13 +45,12 @@ namespace BulkRenameNS
         public void DoBulkRename()
         {
             FileExt = "." + FileExt;
-            string OldPath = "", NewPath = "", CurrFile = "";
+            string OldPath = "", NewPath = "";
             DirectoryInfo DirInf = new DirectoryInfo(LocalPath);
             FilesNames = DirInf.GetFiles("*" + FileExt).ToList();
-            for (int i = 0, j = 0; i < FilesNames.Count; i++)
+            for (int i = 0, j = 1; i < FilesNames.Count; i++)
             {
-                CurrFile = FilesNames[i].Name;
-                OldPath = LocalPath + "\\" + CurrFile;
+                OldPath = LocalPath + "\\" + FilesNames[i].Name;
                 NewPath = LocalPath + "\\" + Param + Convert.ToString(j++) + FileExt;
                 File.Move(OldPath, NewPath);
             }

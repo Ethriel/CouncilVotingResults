@@ -30,21 +30,24 @@ namespace ReplaceSymbNS
             What = what.ToCharArray();
             Onto = onto.ToCharArray();
             if (What.Length > 1 || Onto.Length > 1)
-                throw new Exception("Too many characters int WHAT or ONTO");
+                throw new Exception("Too many characters in WHAT or ONTO");
             DoReplaceSymb();
         }
 
         public void DoReplaceSymb()
         {
-            string CurrFile = "", OldPath = "", NewPath = "", NewName = "";
+            string OldPath = "", NewPath = "", NewName = "";
             char what = What[0], onto = Onto[0];
             DirectoryInfo DirInfo = new DirectoryInfo(LocalPath);
+            if(!DirInfo.Exists)
+            {
+                throw new Exception("Selected directory does not exist!");
+            }
             FileNames = DirInfo.GetFiles().ToList();
             for (int i = 0; i < FileNames.Count; i++)
             {
-                CurrFile = FileNames[i].Name;
-                OldPath = LocalPath + "\\" + CurrFile;
-                NewName = CurrFile.Replace(what, onto);
+                OldPath = LocalPath + "\\" + FileNames[i].Name;
+                NewName = FileNames[i].Name.Replace(what, onto);
                 NewPath = LocalPath + "\\" + NewName;
                 File.Move(OldPath, NewPath);
             }

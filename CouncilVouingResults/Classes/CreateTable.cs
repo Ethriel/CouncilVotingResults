@@ -12,13 +12,13 @@ namespace HTMLNS
 {
     class CreateTable
     {
-        string pathHTML;
-        string pathLOCAL;
-        string pathEx;
-        string criteria;
-        string tableTitle;
+        string PathHTML;
+        string PathLOCAL;
+        string PathEx;
+        string Criteria;
+        string TableTitle;
         string output;
-        string sheetName;
+        string SheetName;
         List<string> FilesPaths;
         List<string> HTMLpaths;
         List<string> DescNames;
@@ -30,12 +30,12 @@ namespace HTMLNS
         ExcelPackage excel;
         public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX)
         {
-            pathHTML = "http://rivnerada.gov.ua/portal-files/results-city-council-vote";
-            tableTitle = titleTable;
-            pathEx = PathToXLSX;
-            pathLOCAL = LOCALpath;
-            criteria = filesCriteria;
-            sheetName = nameSheet;
+            PathHTML = "http://rivnerada.gov.ua/portal-files/results-city-council-vote";
+            TableTitle = titleTable;
+            PathEx = PathToXLSX;
+            PathLOCAL = LOCALpath;
+            Criteria = filesCriteria;
+            SheetName = nameSheet;
             Work();
         }
         public CreateTable()
@@ -53,11 +53,11 @@ namespace HTMLNS
         }
         public CreateTable(string HTMLpath, string LOCALpath, string filesCriteria, string exPath, string _sessionName, string titleTable)
         {
-            pathHTML = HTMLpath;
-            pathLOCAL = LOCALpath;
-            criteria = filesCriteria;
-            pathEx = exPath;
-            tableTitle = titleTable;
+            PathHTML = HTMLpath;
+            PathLOCAL = LOCALpath;
+            Criteria = filesCriteria;
+            PathEx = exPath;
+            TableTitle = titleTable;
             output = "";
             FilesPaths = new List<string>();
             HTMLpaths = new List<string>();
@@ -71,37 +71,34 @@ namespace HTMLNS
         }
         public void FillFilesList()
         {
-            string _path = pathLOCAL;
-            string year = criteria.Substring(0, 4);
-            string htmlPath = "";
+            string year = Criteria.Substring(0, 4);
             year += @"/";
-            DirectoryInfo dirInf = new DirectoryInfo(_path);
-            List<FileInfo> filesInfo = dirInf.GetFiles(criteria + "*.html").ToList();
+            DirectoryInfo dirInf = new DirectoryInfo(PathLOCAL);
+            if(!dirInf.Exists)
+            {
+                throw new Exception("Directory with needed files does not exist!");
+            }
+            List<FileInfo> filesInfo = dirInf.GetFiles(Criteria + "*.html").ToList();
             filesInfo.Sort(new NaturalFileInfoNameComparer());
-            FilesPaths = filesInfo.Select(s => _path + "\\" + s.Name).ToList();
+            FilesPaths = filesInfo.Select(s => PathLOCAL + "\\" + s.Name).ToList();
             for (int i = 0; i < filesInfo.Count; i++)
             {
-                htmlPath = pathHTML + "/" + year + filesInfo[i].Name;
-                HTMLpaths.Add(htmlPath);
+                HTMLpaths.Add(PathHTML + "/" + year + filesInfo[i].Name);
             }
         }
         public void FillDescNames()
         {
             string start = "<td/><td colspan=\"9\" class=\"s2\">";
             string stop = "</td><td/>";
-            string currFile = "";
             string tmp = "";
-            string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currFile = FilesPaths[i];
-                tmp = File.ReadAllText(currFile);
+                tmp = File.ReadAllText(FilesPaths[i]);
                 from = tmp.IndexOf(start) + start.Length;
                 to = tmp.IndexOf(stop, from);
-                toWrite = tmp.Substring(from, to - from);
-                DescNames.Add(toWrite);
+                DescNames.Add(tmp.Substring(from, to - from));
             }
             for (int i = 0; i < DescNames.Count; i++)
             {
@@ -112,76 +109,61 @@ namespace HTMLNS
         {
             string start = "<td colspan=\"11\" class=\"s3\">Так  ( Голосування: ";
             string stop = " )</td>";
-            string currFile = "";
             string tmp = "";
-            string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currFile = FilesPaths[i];
-                tmp = File.ReadAllText(currFile);
+                tmp = File.ReadAllText(FilesPaths[i]);
                 from = tmp.IndexOf(start) + start.Length;
                 to = tmp.IndexOf(stop, from);
-                toWrite = tmp.Substring(from, to - from);
-                Yes.Add(toWrite);
+                Yes.Add(tmp.Substring(from, to - from));
             }
         }
         public void FillNo()
         {
             string start = "<td colspan=\"11\" class=\"s3\">Ні  ( Голосування: ";
             string stop = " )</td>";
-            string currFile = "";
             string tmp = "";
-            string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currFile = FilesPaths[i];
-                tmp = File.ReadAllText(currFile);
+                tmp = File.ReadAllText(FilesPaths[i]);
                 from = tmp.IndexOf(start) + start.Length;
                 to = tmp.IndexOf(stop, from);
-                toWrite = tmp.Substring(from, to - from);
-                No.Add(toWrite);
+                No.Add(tmp.Substring(from, to - from));
             }
         }
         public void FillRefrained()
         {
             string start = "<td colspan=\"11\" class=\"s3\">Утрималися  ( Голосування: ";
             string stop = " )</td>";
-            string currFile = "";
             string tmp = "";
-            string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currFile = FilesPaths[i];
-                tmp = File.ReadAllText(currFile);
+                tmp = File.ReadAllText(FilesPaths[i]);
                 from = tmp.IndexOf(start) + start.Length;
                 to = tmp.IndexOf(stop, from);
-                toWrite = tmp.Substring(from, to - from);
-                Refrained.Add(toWrite);
+                Refrained.Add(tmp.Substring(from, to - from));
             }
         }
         public void FillDidntVote()
         {
             string start = "<td colspan=\"11\" class=\"s3\">Не голосували  ( Загалом: ";
             string stop = " )</td>";
-            string currFile = "";
             string tmp = "";
             string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currFile = FilesPaths[i];
-                tmp = File.ReadAllText(currFile);
+                tmp = File.ReadAllText(FilesPaths[i]);
                 from = tmp.IndexOf(start) + start.Length;
                 to = tmp.IndexOf(stop, from);
-                toWrite = tmp.Substring(from, to - from);
-                DidntVote.Add(toWrite);
+                DidntVote.Add(tmp.Substring(from, to - from));
             }
         }
         public void FillOutput()
@@ -190,31 +172,26 @@ namespace HTMLNS
             string meta2 = "<meta name=Generator content=\"FastReport 4.0 http://www.fast-report.com\">\n</head>\n";
             string style = "<link rel=\"stylesheet\" href=\"css/styles.css\"/>\n";
             string body = "<body bgcolor=\"#FFFFFF\" text=\"#000000\">\n";
-            string table = "<table cellpadding=\"7\" border=\"0px\"><caption>" + "<b>" + tableTitle + "</b>" + "</caption>\n";
+            string table = "<table cellpadding=\"7\" border=\"0px\"><caption>" + "<b>" + TableTitle + "</b>" + "</caption>\n";
             string start = meta1 + meta2 + style + body + table;
             string end = "</table>\n</body></html>";
             string currRow = "";
-            string currName = "";
-            string currPath = "";
             output = start;
             for (int i = 0; i < FilesPaths.Count; i++)
             {
-                currPath = HTMLpaths[i];
-                currName = DescNames[i];
-                currRow = "<tr><td><a target=\"_blank\" href=\"" + currPath + "\"</a>" + currName + "</td></tr>\n";
+                currRow = "<tr><td><a target=\"_blank\" href=\"" + HTMLpaths[i] + "\"</a>" + DescNames[i] + "</td></tr>\n";
                 output += currRow;
             }
             output += end;
-            string year = criteria.Substring(0, 4);
+            string year = Criteria.Substring(0, 4);
 
-            string OutDirPath = "";
-            if(!new DirectoryInfo(pathLOCAL + "\\OUT\\").Exists)
+            string OutDirPath = PathLOCAL + "\\OUT\\";
+            if (!new DirectoryInfo(OutDirPath).Exists)
             {
-                OutDirPath = pathLOCAL + "\\OUT\\";
                 Directory.CreateDirectory(OutDirPath);
             }
            
-            string fullPath = OutDirPath + criteria + ".html";
+            string fullPath = OutDirPath + Criteria + ".html";
             File.WriteAllText(fullPath, output);
         }
         public void FillForExcel()
@@ -223,21 +200,20 @@ namespace HTMLNS
             ExcelRows.Add(head);
             for (int i = 0; i < HTMLpaths.Count; i++)
             {
-                string[] tmp = new string[] { DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i] };
-                ExcelRows.Add(tmp);
+                ExcelRows.Add(new string[] { DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i] });
             }
         }
         public void FillExcel()
         {
-            string _path = pathEx;
-            _path += @"\";
-            string fileName = criteria + ".xlsx";
+            string path = PathEx;
+            path += @"\";
+            string fileName = Criteria + ".xlsx";
             string quntity = (ExcelRows.Count).ToString();
             string range = "A1:" + "B" + quntity;
-            excel.Workbook.Worksheets.Add(sheetName);
+            excel.Workbook.Worksheets.Add(SheetName);
             int a = excel.Workbook.Worksheets.Count;
-            FileInfo excelFile = new FileInfo(_path + fileName);
-            var excelWorksheet = excel.Workbook.Worksheets[sheetName];
+            FileInfo excelFile = new FileInfo(path + fileName);
+            var excelWorksheet = excel.Workbook.Worksheets[SheetName];
             excelWorksheet.Cells[range].LoadFromArrays(ExcelRows);
             excelWorksheet.Column(1).Width = 180;
             excelWorksheet.Column(2).Width = 5;

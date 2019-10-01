@@ -10,7 +10,7 @@ namespace CouncilVouingResults.Classes
 {
     public class Resize
     {
-        private Form form { get; set; }
+        private Form FormToWork { get; set; }
         private float FontSize { get; set; }
         private System.Drawing.SizeF FormSize { get; set; }
         List<System.Drawing.Rectangle> ArrControlStorage = new List<System.Drawing.Rectangle>();
@@ -18,14 +18,14 @@ namespace CouncilVouingResults.Classes
 
         public Resize(Form form)
         {
-            this.form = form;
+            FormToWork = form;
             FormSize = form.ClientSize;
             FontSize = form.Font.Size;
         }
 
         public void GetInitialSize()
         {
-            var Controls = GetAllControls(form);
+            var Controls = GetAllControls(FormToWork);
             foreach (Control control in Controls)
             {
                 ArrControlStorage.Add(control.Bounds);          
@@ -36,9 +36,9 @@ namespace CouncilVouingResults.Classes
 
         public void DoResize()
         {
-            double FormRatioWidth = form.ClientSize.Width / (double)FormSize.Width;
-            double FormRatioHeight = form.ClientSize.Height / (double)FormSize.Height;
-            var Controls = GetAllControls(form);
+            double FormRatioWidth = FormToWork.ClientSize.Width / (double)FormSize.Width;
+            double FormRatioHeight = FormToWork.ClientSize.Height / (double)FormSize.Height;
+            var Controls = GetAllControls(FormToWork);
             int Pos = -1;
             foreach (Control control in Controls)
             {
@@ -50,7 +50,7 @@ namespace CouncilVouingResults.Classes
                 control.Bounds = new System.Drawing.Rectangle(_controlposition, _controlSize);
                 if (control.GetType() == typeof(DataGridView))
                     DgvColumnAdjust(((DataGridView)control), ShowRowHeader);
-                control.Font = new System.Drawing.Font(form.Font.FontFamily,
+                control.Font = new System.Drawing.Font(FormToWork.Font.FontFamily,
              (float)(((Convert.ToDouble(FontSize) * FormRatioWidth) / 2) +
               ((Convert.ToDouble(FontSize) * FormRatioHeight) / 2)));
             }
