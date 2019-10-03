@@ -104,12 +104,26 @@ namespace CouncilVouingResults
                 return;
             }
             butWorkVote.Visible = true;
+            butWriteToJson.Visible = true;
         }
 
         private bool AllParamsOkVote()
         {
             return !(string.IsNullOrWhiteSpace(textSessionNameVote.Text) || string.IsNullOrWhiteSpace(textCriteriaVote.Text)
                 || string.IsNullOrWhiteSpace(textTableTitleVote.Text) || string.IsNullOrWhiteSpace(LocPathVote) || string.IsNullOrWhiteSpace(PathToXLSX));
+        }
+
+        private void butWriteToJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TableWork.SetParams(LocPathVote, textCriteriaVote.Text, textTableTitleVote.Text, textSessionNameVote.Text, PathToXLSX);
+                TableWork.WriteTOJSON();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
+            }
         }
     }
 }

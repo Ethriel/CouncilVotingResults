@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BulkRename.cs" />
+    <Compile Include="Classes\JSONWork.cs" />
     <Compile Include="Classes\Resize.cs" />
     <Compile Include="Forms\BulkRenameForm.cs">
       <SubType>Form</SubType>

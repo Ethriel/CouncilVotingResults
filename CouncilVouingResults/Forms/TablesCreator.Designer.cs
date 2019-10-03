@@ -44,6 +44,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.labTimePassed = new System.Windows.Forms.Label();
             this.butSetParams = new System.Windows.Forms.Button();
+            this.butWriteToJson = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // labSelectedPathXLSX
@@ -194,11 +195,23 @@
             this.butSetParams.UseVisualStyleBackColor = true;
             this.butSetParams.Click += new System.EventHandler(this.butSetParams_Click);
             // 
+            // butWriteToJson
+            // 
+            this.butWriteToJson.Location = new System.Drawing.Point(488, 84);
+            this.butWriteToJson.Name = "butWriteToJson";
+            this.butWriteToJson.Size = new System.Drawing.Size(113, 23);
+            this.butWriteToJson.TabIndex = 51;
+            this.butWriteToJson.Text = "Save to Json";
+            this.butWriteToJson.UseVisualStyleBackColor = true;
+            this.butWriteToJson.Visible = false;
+            this.butWriteToJson.Click += new System.EventHandler(this.butWriteToJson_Click);
+            // 
             // TablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 157);
+            this.Controls.Add(this.butWriteToJson);
             this.Controls.Add(this.butSetParams);
             this.Controls.Add(this.labTimePassed);
             this.Controls.Add(this.labSelectedPathXLSX);
@@ -240,5 +253,6 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Label labTimePassed;
         private System.Windows.Forms.Button butSetParams;
+        private System.Windows.Forms.Button butWriteToJson;
     }
 }

@@ -7,6 +7,7 @@ using OfficeOpenXml;
 using System.IO;
 using System.Security;
 using System.Runtime.InteropServices;
+using CouncilVouingResults.Classes;
 
 namespace HTMLNS
 {
@@ -28,6 +29,10 @@ namespace HTMLNS
         List<string> DidntVote;
         List<string[]> ExcelRows;
         ExcelPackage excel;
+
+        Descisions DescisionsList;
+        JSON JSONWork;
+        
         public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX)
         {
             PathHTML = "http://rivnerada.gov.ua/portal-files/results-city-council-vote";
@@ -50,6 +55,8 @@ namespace HTMLNS
             ExcelRows = new List<string[]>();
             excel = new ExcelPackage();
             output = "";
+            DescisionsList = new Descisions();
+            JSONWork = new JSON();
         }
         public CreateTable(string HTMLpath, string LOCALpath, string filesCriteria, string exPath, string _sessionName, string titleTable)
         {
@@ -68,6 +75,8 @@ namespace HTMLNS
             DidntVote = new List<string>();
             ExcelRows = new List<string[]>();
             excel = new ExcelPackage();
+            DescisionsList = new Descisions();
+            JSONWork = new JSON();
         }
         public void FillFilesList()
         {
@@ -235,7 +244,41 @@ namespace HTMLNS
             FillForExcel();
             FillExcel();
         }
+
+        private void WorkForJson()
+        {
+            FillFilesList();
+            FillYes();
+            FillNo();
+            FillRefrained();
+            FillDidntVote();
+            FillDescNames();
+        }
+
+        private void FillDescisionsList()
+        {
+            DescisionsList.SetSession(SheetName);
+            WorkForJson();
+            for (int i = 0; i < DescNames.Count; i++)
+            {
+                DescisionsList.AddDescision(DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i]);
+            }
+        }
+
+        public void WriteTOJSON()
+        {
+            FillDescisionsList();
+            JSONWork.SetDescisions(DescisionsList);
+            JSONWork.Write(PathLOCAL);
+        }
+        public void ReadFromJSON()
+        {
+
+        }
     }
+
+   
+
     [SuppressUnmanagedCodeSecurity]
     internal static class SafeNativeMethods
     {
