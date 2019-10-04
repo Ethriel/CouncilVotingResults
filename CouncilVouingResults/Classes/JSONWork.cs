@@ -126,17 +126,17 @@ namespace CouncilVouingResults.Classes
 
         public void ReadForInfo(string path)
         {
+            string[] patterns = new string[] { "\"DescisionsList\"", "\"DecsName\"", "\"DidntVote\"", "\"Yes\"", "\"No\"", "\"Refrained\"", "\"HTMLPath\"" };
+            string[] replaces = new string[] { "\"Список пропозицій\"", "\"Назва пропозиції\"", "\"Не голосували\"", "\"Так\"", "\"Ні\"", "\"Утримались\"", "\"Посилання\"" };
+
             string[] jsonFile = File.ReadAllLines(path + "\\" + DescisionsList.Session + ".json");
 
             for (int i = 0; i < jsonFile.Length; i++)
             {
-                jsonFile[i] = jsonFile[i].Replace("\"DescisionsList\"", "\"Список пропозицій\"");
-                jsonFile[i] = jsonFile[i].Replace("\"DecsName\"", "\"Назва пропозиції\"");
-                jsonFile[i] = jsonFile[i].Replace("\"DidntVote\"", "\"Не голосували\"");
-                jsonFile[i] = jsonFile[i].Replace("\"Yes\"", "\"Так\"");
-                jsonFile[i] = jsonFile[i].Replace("\"No\"", "\"Ні\"");
-                jsonFile[i] = jsonFile[i].Replace("\"Refrained\"", "\"Утримались\"");
-                jsonFile[i] = jsonFile[i].Replace("\"HTMLPath\"", "\"Посилання\"");
+                for (int j = 0; j < patterns.Length; j++)
+                {
+                    jsonFile[i] = jsonFile[i].Replace(patterns[j], replaces[j]);
+                }
             }
             
             WriteForInfo(path, jsonFile);
