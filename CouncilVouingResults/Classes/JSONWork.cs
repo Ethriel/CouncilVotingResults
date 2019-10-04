@@ -24,7 +24,7 @@ namespace CouncilVouingResults.Classes
         public string Refrained { get; private set; }
         [DataMember]
         public string DidntVote { get; private set; }
-
+        [DataMember]
         public string HTMLPath { get; private set; }
 
 
