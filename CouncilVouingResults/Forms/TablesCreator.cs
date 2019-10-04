@@ -12,6 +12,7 @@ namespace CouncilVouingResults
         string LocPathVote;
         string PathToXLSX;
         string PathToJSON;
+        bool TablesCreated;
 
         public TablesCreator()
         {
@@ -19,6 +20,7 @@ namespace CouncilVouingResults
             TableWork = new CreateTable();
             MakeVisibleTable();
             BaseForm = new CouncilVouingResults();
+            TablesCreated = false;
         }
 
         public TablesCreator(CouncilVouingResults e)
@@ -27,6 +29,7 @@ namespace CouncilVouingResults
             TableWork = new CreateTable();
             MakeVisibleTable();
             BaseForm = e;
+            TablesCreated = false;
         }
 
         private void MakeVisibleTable()
@@ -54,6 +57,7 @@ namespace CouncilVouingResults
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     LocPathVote = dialog.SelectedPath;
+                    labPathLocalText.Text = dialog.SelectedPath;
                 }
             }
         }
@@ -66,6 +70,7 @@ namespace CouncilVouingResults
                 {
                     PathToXLSX = dialog.SelectedPath;
                 }
+                labPathXlsxText.Text = dialog.SelectedPath;
             }
         }
 
@@ -77,16 +82,18 @@ namespace CouncilVouingResults
                 TableWork.SetParams(LocPathVote, textCriteriaVote.Text, textTableTitleVote.Text, textSessionNameVote.Text, PathToXLSX);
                 TableWork.Work();
                 Watch.Stop();
-                MessageBox.Show("Success!");
+                MessageBox.Show("Tables created!", "All OK");
                 labTimePassed.Visible = true;
                 labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
-                butWriteToJson.Visible = true;
+                TablesCreated = true;
+                if(!string.IsNullOrEmpty(PathToJSON))
+                    butWriteToJson.Visible = true;
             }
             catch (Exception ex)
             {
-                string mess = ex.Message + $". Time: {DateTime.Now}\n";
+                string mess = "Error during tables creation operation:\n" + ex.Message + $"\n. Time: {DateTime.Now}\n";
                 mess += $"Call stack: {ex.StackTrace}";
-                MessageBox.Show(mess);
+                MessageBox.Show(mess, "Error");
             }
         }
 
@@ -99,11 +106,10 @@ namespace CouncilVouingResults
         {
             if (!AllParamsOkVote())
             {
-                MessageBox.Show("Some parameters are EMPTY");
+                MessageBox.Show("Some parameters are EMPTY", "Error");
                 return;
             }
             butWorkVote.Visible = true;
-            
         }
 
         private bool AllParamsOkVote()
@@ -116,12 +122,13 @@ namespace CouncilVouingResults
         {
             try
             {
-                TableWork.SetParams(LocPathVote, textCriteriaVote.Text, textTableTitleVote.Text, textSessionNameVote.Text, PathToXLSX, PathToJSON);
+                TableWork.SetJsonPath(PathToJSON);
                 TableWork.WriteTOJSON();
+                MessageBox.Show("JSON file created", "All OK");
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Error");
+                MessageBox.Show("Error during JSON operation:\n" + $". Time: {DateTime.Now}\n" + ex.Message, "Error");
             }
         }
 
@@ -132,7 +139,10 @@ namespace CouncilVouingResults
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     PathToJSON = dialog.SelectedPath;
+                    labPathJsonText.Text = dialog.SelectedPath;
                 }
+                if(TablesCreated)
+                    butWriteToJson.Visible = true;
             }
         }
     }

@@ -45,11 +45,14 @@
             this.butWriteToJson = new System.Windows.Forms.Button();
             this.labPathToJSON = new System.Windows.Forms.Label();
             this.butPathToJSON = new System.Windows.Forms.Button();
+            this.labPathLocalText = new System.Windows.Forms.Label();
+            this.labPathXlsxText = new System.Windows.Forms.Label();
+            this.labPathJsonText = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // butSlectPathXLSX
             // 
-            this.butSlectPathXLSX.Location = new System.Drawing.Point(181, 118);
+            this.butSlectPathXLSX.Location = new System.Drawing.Point(173, 112);
             this.butSlectPathXLSX.Name = "butSlectPathXLSX";
             this.butSlectPathXLSX.Size = new System.Drawing.Size(75, 23);
             this.butSlectPathXLSX.TabIndex = 47;
@@ -61,7 +64,7 @@
             // labPathToXLSX
             // 
             this.labPathToXLSX.AutoSize = true;
-            this.labPathToXLSX.Location = new System.Drawing.Point(17, 123);
+            this.labPathToXLSX.Location = new System.Drawing.Point(9, 117);
             this.labPathToXLSX.Name = "labPathToXLSX";
             this.labPathToXLSX.Size = new System.Drawing.Size(139, 13);
             this.labPathToXLSX.TabIndex = 46;
@@ -70,7 +73,7 @@
             // 
             // textSessionNameVote
             // 
-            this.textSessionNameVote.Location = new System.Drawing.Point(87, 12);
+            this.textSessionNameVote.Location = new System.Drawing.Point(100, 6);
             this.textSessionNameVote.Name = "textSessionNameVote";
             this.textSessionNameVote.Size = new System.Drawing.Size(420, 20);
             this.textSessionNameVote.TabIndex = 44;
@@ -79,16 +82,16 @@
             // labSessionNameVote
             // 
             this.labSessionNameVote.AutoSize = true;
-            this.labSessionNameVote.Location = new System.Drawing.Point(8, 15);
+            this.labSessionNameVote.Location = new System.Drawing.Point(0, 9);
             this.labSessionNameVote.Name = "labSessionNameVote";
-            this.labSessionNameVote.Size = new System.Drawing.Size(73, 13);
+            this.labSessionNameVote.Size = new System.Drawing.Size(94, 13);
             this.labSessionNameVote.TabIndex = 43;
-            this.labSessionNameVote.Text = "Session name";
+            this.labSessionNameVote.Text = "XLSX Sheet name";
             this.labSessionNameVote.Visible = false;
             // 
             // butSelectFolderVote
             // 
-            this.butSelectFolderVote.Location = new System.Drawing.Point(181, 89);
+            this.butSelectFolderVote.Location = new System.Drawing.Point(173, 83);
             this.butSelectFolderVote.Name = "butSelectFolderVote";
             this.butSelectFolderVote.Size = new System.Drawing.Size(75, 23);
             this.butSelectFolderVote.TabIndex = 41;
@@ -99,7 +102,7 @@
             // 
             // textTableTitleVote
             // 
-            this.textTableTitleVote.Location = new System.Drawing.Point(87, 63);
+            this.textTableTitleVote.Location = new System.Drawing.Point(100, 57);
             this.textTableTitleVote.Name = "textTableTitleVote";
             this.textTableTitleVote.Size = new System.Drawing.Size(420, 20);
             this.textTableTitleVote.TabIndex = 39;
@@ -108,7 +111,7 @@
             // labTableTitleVote
             // 
             this.labTableTitleVote.AutoSize = true;
-            this.labTableTitleVote.Location = new System.Drawing.Point(24, 68);
+            this.labTableTitleVote.Location = new System.Drawing.Point(16, 62);
             this.labTableTitleVote.Name = "labTableTitleVote";
             this.labTableTitleVote.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.labTableTitleVote.Size = new System.Drawing.Size(57, 13);
@@ -130,7 +133,7 @@
             // vabCriteriaVote
             // 
             this.vabCriteriaVote.AutoSize = true;
-            this.vabCriteriaVote.Location = new System.Drawing.Point(28, 40);
+            this.vabCriteriaVote.Location = new System.Drawing.Point(20, 34);
             this.vabCriteriaVote.Name = "vabCriteriaVote";
             this.vabCriteriaVote.Size = new System.Drawing.Size(39, 13);
             this.vabCriteriaVote.TabIndex = 34;
@@ -140,7 +143,7 @@
             // labLocPathVote
             // 
             this.labLocPathVote.AutoSize = true;
-            this.labLocPathVote.Location = new System.Drawing.Point(17, 94);
+            this.labLocPathVote.Location = new System.Drawing.Point(9, 88);
             this.labLocPathVote.Name = "labLocPathVote";
             this.labLocPathVote.Size = new System.Drawing.Size(158, 13);
             this.labLocPathVote.TabIndex = 35;
@@ -150,7 +153,7 @@
             // 
             // textCriteriaVote
             // 
-            this.textCriteriaVote.Location = new System.Drawing.Point(87, 38);
+            this.textCriteriaVote.Location = new System.Drawing.Point(100, 31);
             this.textCriteriaVote.Name = "textCriteriaVote";
             this.textCriteriaVote.Size = new System.Drawing.Size(420, 20);
             this.textCriteriaVote.TabIndex = 33;
@@ -189,7 +192,7 @@
             // labPathToJSON
             // 
             this.labPathToJSON.AutoSize = true;
-            this.labPathToJSON.Location = new System.Drawing.Point(20, 154);
+            this.labPathToJSON.Location = new System.Drawing.Point(9, 148);
             this.labPathToJSON.Name = "labPathToJSON";
             this.labPathToJSON.Size = new System.Drawing.Size(72, 13);
             this.labPathToJSON.TabIndex = 52;
@@ -197,7 +200,7 @@
             // 
             // butPathToJSON
             // 
-            this.butPathToJSON.Location = new System.Drawing.Point(181, 149);
+            this.butPathToJSON.Location = new System.Drawing.Point(173, 143);
             this.butPathToJSON.Name = "butPathToJSON";
             this.butPathToJSON.Size = new System.Drawing.Size(75, 23);
             this.butPathToJSON.TabIndex = 53;
@@ -205,11 +208,41 @@
             this.butPathToJSON.UseVisualStyleBackColor = true;
             this.butPathToJSON.Click += new System.EventHandler(this.butPathToJSON_Click);
             // 
+            // labPathLocalText
+            // 
+            this.labPathLocalText.AutoSize = true;
+            this.labPathLocalText.Location = new System.Drawing.Point(254, 88);
+            this.labPathLocalText.Name = "labPathLocalText";
+            this.labPathLocalText.Size = new System.Drawing.Size(45, 13);
+            this.labPathLocalText.TabIndex = 54;
+            this.labPathLocalText.Text = "No path";
+            // 
+            // labPathXlsxText
+            // 
+            this.labPathXlsxText.AutoSize = true;
+            this.labPathXlsxText.Location = new System.Drawing.Point(254, 117);
+            this.labPathXlsxText.Name = "labPathXlsxText";
+            this.labPathXlsxText.Size = new System.Drawing.Size(45, 13);
+            this.labPathXlsxText.TabIndex = 55;
+            this.labPathXlsxText.Text = "No path";
+            // 
+            // labPathJsonText
+            // 
+            this.labPathJsonText.AutoSize = true;
+            this.labPathJsonText.Location = new System.Drawing.Point(254, 148);
+            this.labPathJsonText.Name = "labPathJsonText";
+            this.labPathJsonText.Size = new System.Drawing.Size(45, 13);
+            this.labPathJsonText.TabIndex = 56;
+            this.labPathJsonText.Text = "No path";
+            // 
             // TablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(612, 194);
+            this.Controls.Add(this.labPathJsonText);
+            this.Controls.Add(this.labPathXlsxText);
+            this.Controls.Add(this.labPathLocalText);
             this.Controls.Add(this.butPathToJSON);
             this.Controls.Add(this.labPathToJSON);
             this.Controls.Add(this.butWriteToJson);
@@ -252,5 +285,8 @@
         private System.Windows.Forms.Button butWriteToJson;
         private System.Windows.Forms.Label labPathToJSON;
         private System.Windows.Forms.Button butPathToJSON;
+        private System.Windows.Forms.Label labPathLocalText;
+        private System.Windows.Forms.Label labPathXlsxText;
+        private System.Windows.Forms.Label labPathJsonText;
     }
 }

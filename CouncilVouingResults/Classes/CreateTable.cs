@@ -35,7 +35,7 @@ namespace HTMLNS
         Descisions DescisionsList;
         JSON JSONWork;
         
-        public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX, string PathJSON="")
+        public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX)
         {
             PathHTML = "http://rivnerada.gov.ua/portal-files/results-city-council-vote";
             TableTitle = titleTable;
@@ -43,7 +43,10 @@ namespace HTMLNS
             PathLOCAL = LOCALpath;
             Criteria = filesCriteria;
             SheetName = nameSheet;
-            PathJson = PathJSON;
+        }
+        public void SetJsonPath(string JsonPath)
+        {
+            PathJson = JsonPath;
         }
         public CreateTable()
         {
@@ -247,20 +250,9 @@ namespace HTMLNS
             FillExcel();
         }
 
-        private void WorkForJson()
-        {
-            FillFilesList();
-            FillYes();
-            FillNo();
-            FillRefrained();
-            FillDidntVote();
-            FillDescNames();
-        }
-
         private void FillDescisionsList()
         {
-            DescisionsList.SetSession(SheetName);
-            WorkForJson();
+            DescisionsList.SetSession(TableTitle);
             for (int i = 0; i < DescNames.Count; i++)
             {
                 DescisionsList.AddDescision(i + 1, DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i]);
