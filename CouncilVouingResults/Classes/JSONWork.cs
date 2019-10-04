@@ -77,10 +77,11 @@ namespace CouncilVouingResults.Classes
     class JSON
     {
         public Descisions DescisionsList { get; private set; }
-
+        string info;
         public JSON()
         {
             DescisionsList = new Descisions();
+            info = string.Empty;
         }
 
         public void SetDescisions(Descisions descisions)
@@ -100,6 +101,10 @@ namespace CouncilVouingResults.Classes
                 {
                     var ser = new DataContractJsonSerializer(typeof(Descisions));
                     ser.WriteObject(writer, DescisionsList);
+                    if(!string.IsNullOrEmpty(info))
+                    {
+
+                    }
                 }
             }
         }
@@ -114,8 +119,36 @@ namespace CouncilVouingResults.Classes
             using (FileStream f = new FileStream(path + "\\" + DescisionsList.Session + ".json", FileMode.Open))
             {
                 DescisionsList = (Descisions)jsonFormatter.ReadObject(f);
+                info = (string)jsonFormatter.ReadObject(f);
                 return DescisionsList;
             }
+        }
+
+        public void ReadForInfo(string path)
+        {
+            string[] jsonFile = File.ReadAllLines(path + "\\" + DescisionsList.Session + ".json");
+
+            for (int i = 0; i < jsonFile.Length; i++)
+            {
+                jsonFile[i] = jsonFile[i].Replace("\"DescisionsList\"", "\"Список пропозицій\"");
+                jsonFile[i] = jsonFile[i].Replace("\"DecsName\"", "\"Назва пропозиції\"");
+                jsonFile[i] = jsonFile[i].Replace("\"DidntVote\"", "\"Не голосували\"");
+                jsonFile[i] = jsonFile[i].Replace("\"Yes\"", "\"Так\"");
+                jsonFile[i] = jsonFile[i].Replace("\"No\"", "\"Ні\"");
+                jsonFile[i] = jsonFile[i].Replace("\"Refrained\"", "\"Утримались\"");
+                jsonFile[i] = jsonFile[i].Replace("\"HTMLPath\"", "\"Посилання\"");
+            }
+            
+            WriteForInfo(path, jsonFile);
+        }
+
+        private void WriteForInfo(string path, string[] jsonFile)
+        {
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
+            File.WriteAllLines(path + "\\" + DescisionsList.Session + "_info_.json", jsonFile);
         }
     }
 }

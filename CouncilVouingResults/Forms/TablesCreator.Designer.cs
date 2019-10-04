@@ -48,6 +48,7 @@
             this.labPathLocalText = new System.Windows.Forms.Label();
             this.labPathXlsxText = new System.Windows.Forms.Label();
             this.labPathJsonText = new System.Windows.Forms.Label();
+            this.butSaveReadableJson = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // butSlectPathXLSX
@@ -235,11 +236,23 @@
             this.labPathJsonText.TabIndex = 56;
             this.labPathJsonText.Text = "No path";
             // 
+            // butSaveReadableJson
+            // 
+            this.butSaveReadableJson.Location = new System.Drawing.Point(487, 179);
+            this.butSaveReadableJson.Name = "butSaveReadableJson";
+            this.butSaveReadableJson.Size = new System.Drawing.Size(113, 23);
+            this.butSaveReadableJson.TabIndex = 57;
+            this.butSaveReadableJson.Text = "Save readable Json";
+            this.butSaveReadableJson.UseVisualStyleBackColor = true;
+            this.butSaveReadableJson.Visible = false;
+            this.butSaveReadableJson.Click += new System.EventHandler(this.butSaveReadableJson_Click);
+            // 
             // TablesCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 194);
+            this.ClientSize = new System.Drawing.Size(612, 206);
+            this.Controls.Add(this.butSaveReadableJson);
             this.Controls.Add(this.labPathJsonText);
             this.Controls.Add(this.labPathXlsxText);
             this.Controls.Add(this.labPathLocalText);
@@ -288,5 +301,6 @@
         private System.Windows.Forms.Label labPathLocalText;
         private System.Windows.Forms.Label labPathXlsxText;
         private System.Windows.Forms.Label labPathJsonText;
+        private System.Windows.Forms.Button butSaveReadableJson;
     }
 }

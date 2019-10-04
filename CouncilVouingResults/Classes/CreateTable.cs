@@ -273,6 +273,10 @@ namespace HTMLNS
         {
             DescisionsList = JSONWork.Read(PathJson);
         }
+        public void ReadReadableJson()
+        {
+            JSONWork.ReadForInfo(PathJson);
+        }
     }
 
    

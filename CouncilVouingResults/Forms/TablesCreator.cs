@@ -125,6 +125,7 @@ namespace CouncilVouingResults
                 TableWork.SetJsonPath(PathToJSON);
                 TableWork.WriteTOJSON();
                 MessageBox.Show("JSON file created", "All OK");
+                butSaveReadableJson.Visible = true;
             }
             catch (Exception ex)
             {
@@ -143,6 +144,19 @@ namespace CouncilVouingResults
                 }
                 if(TablesCreated)
                     butWriteToJson.Visible = true;
+                
+            }
+        }
+
+        private void butSaveReadableJson_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                TableWork.ReadReadableJson();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message, "Error");
             }
         }
     }
