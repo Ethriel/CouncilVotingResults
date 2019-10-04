@@ -12,7 +12,6 @@ namespace CouncilVouingResults.Classes
     [DataContract]
     class Descision
     {
-        static int counter;
         [DataMember]
         public int ID { get; private set; }
         [DataMember]
@@ -25,21 +24,16 @@ namespace CouncilVouingResults.Classes
         public string Refrained { get; private set; }
         [DataMember]
         public string DidntVote { get; private set; }
-        [DataMember]
+
         public string HTMLPath { get; private set; }
 
-        static Descision()
-        {
-            counter = 1;
-        }
 
         public Descision()
         {
-            counter++;
         }
-        public Descision(string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
+        public Descision(int id, string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
         {
-            ID = counter;
+            ID = id;
             DecsName = descName;
             Yes = yes;
             No = no;
@@ -47,9 +41,9 @@ namespace CouncilVouingResults.Classes
             DidntVote = didntVote;
             HTMLPath = htmlPath;
         }
-        public void SetDescision(string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
+        public void SetDescision(int id, string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
         {
-            ID = counter;
+            ID = id;
             DecsName = descName;
             Yes = yes;
             No = no;
@@ -65,7 +59,6 @@ namespace CouncilVouingResults.Classes
         public List<Descision> DescisionsList { get; private set; }
         [DataMember]
         public string Session { get; private set; }
-
         public Descisions()
         {
             DescisionsList = new List<Descision>();
@@ -76,9 +69,9 @@ namespace CouncilVouingResults.Classes
             Session = session;
         }
 
-        public void AddDescision(string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
+        public void AddDescision(int id, string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
         {
-            DescisionsList.Add(new Descision(descName, yes, no, refrained, didntVote, htmlPath));
+            DescisionsList.Add(new Descision(id, descName, yes, no, refrained, didntVote, htmlPath));
         }
     }
     class JSON
@@ -89,7 +82,7 @@ namespace CouncilVouingResults.Classes
         {
             DescisionsList = new Descisions();
         }
-       
+
         public void SetDescisions(Descisions descisions)
         {
             DescisionsList = descisions;
@@ -97,21 +90,22 @@ namespace CouncilVouingResults.Classes
 
         public void Write(string path)
         {
-            path += "\\JSON";
-            if(!Directory.Exists(path))
+            if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
-            DataContractJsonSerializer jsonFormatter = new DataContractJsonSerializer(typeof(Descisions));
             using (FileStream f = new FileStream(path + "\\" + DescisionsList.Session + ".json", FileMode.Create))
             {
-                jsonFormatter.WriteObject(f, DescisionsList);
+                using (var writer = JsonReaderWriterFactory.CreateJsonWriter(f, Encoding.UTF8, true, true))
+                {
+                    var ser = new DataContractJsonSerializer(typeof(Descisions));
+                    ser.WriteObject(writer, DescisionsList);
+                }
             }
         }
 
         public Descisions Read(string path)
         {
-            path += "\\JSON";
             if (!Directory.Exists(path))
             {
                 throw new Exception("Directory for JSON READ does not exist!");

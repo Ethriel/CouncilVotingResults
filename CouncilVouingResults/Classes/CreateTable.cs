@@ -20,6 +20,8 @@ namespace HTMLNS
         string TableTitle;
         string output;
         string SheetName;
+        string PathJson;
+
         List<string> FilesPaths;
         List<string> HTMLpaths;
         List<string> DescNames;
@@ -33,7 +35,7 @@ namespace HTMLNS
         Descisions DescisionsList;
         JSON JSONWork;
         
-        public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX)
+        public void SetParams(string LOCALpath, string filesCriteria, string titleTable, string nameSheet, string PathToXLSX, string PathJSON="")
         {
             PathHTML = "http://rivnerada.gov.ua/portal-files/results-city-council-vote";
             TableTitle = titleTable;
@@ -41,7 +43,7 @@ namespace HTMLNS
             PathLOCAL = LOCALpath;
             Criteria = filesCriteria;
             SheetName = nameSheet;
-            Work();
+            PathJson = PathJSON;
         }
         public CreateTable()
         {
@@ -57,8 +59,9 @@ namespace HTMLNS
             output = "";
             DescisionsList = new Descisions();
             JSONWork = new JSON();
+            PathJson = "";
         }
-        public CreateTable(string HTMLpath, string LOCALpath, string filesCriteria, string exPath, string _sessionName, string titleTable)
+        public CreateTable(string HTMLpath, string LOCALpath, string filesCriteria, string exPath, string _sessionName, string titleTable, string PathJSON = "")
         {
             PathHTML = HTMLpath;
             PathLOCAL = LOCALpath;
@@ -164,7 +167,6 @@ namespace HTMLNS
             string start = "<td colspan=\"11\" class=\"s3\">Не голосували  ( Загалом: ";
             string stop = " )</td>";
             string tmp = "";
-            string toWrite = "";
             int from = 0;
             int to = 0;
             for (int i = 0; i < FilesPaths.Count; i++)
@@ -261,19 +263,23 @@ namespace HTMLNS
             WorkForJson();
             for (int i = 0; i < DescNames.Count; i++)
             {
-                DescisionsList.AddDescision(DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i]);
+                DescisionsList.AddDescision(i + 1, DescNames[i], Yes[i], No[i], Refrained[i], DidntVote[i], HTMLpaths[i]);
             }
         }
 
         public void WriteTOJSON()
         {
+            if(string.IsNullOrEmpty(PathJson))
+            {
+                throw new Exception("Path to JSON is empty");
+            }
             FillDescisionsList();
             JSONWork.SetDescisions(DescisionsList);
-            JSONWork.Write(PathLOCAL);
+            JSONWork.Write(PathJson);
         }
         public void ReadFromJSON()
         {
-
+            DescisionsList = JSONWork.Read(PathJson);
         }
     }
 
