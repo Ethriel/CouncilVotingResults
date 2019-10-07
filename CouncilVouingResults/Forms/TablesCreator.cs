@@ -124,7 +124,7 @@ namespace CouncilVouingResults
             {
                 TableWork.SetJsonPath(PathToJSON);
                 TableWork.WriteTOJSON();
-                MessageBox.Show("JSON file created", "All OK");
+                MessageBox.Show("JSON file was created", "All OK");
                 butSaveReadableJson.Visible = true;
             }
             catch (Exception ex)
@@ -152,11 +152,12 @@ namespace CouncilVouingResults
         {
             try
             {
-                TableWork.ReadReadableJson();
+                TableWork.CreateReadableJson();
+                MessageBox.Show("Readable JSON file was created", "All OK");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error");
+                MessageBox.Show("Error during creating readable JSON file: " + ex.Message, "Error");
             }
         }
     }

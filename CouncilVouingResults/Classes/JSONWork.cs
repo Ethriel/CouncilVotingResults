@@ -124,7 +124,7 @@ namespace CouncilVouingResults.Classes
             }
         }
 
-        public void ReadForInfo(string path)
+        public void CreateReadable(string path)
         {
             string[] patterns = new string[] { "\"DescisionsList\"", "\"DecsName\"", "\"DidntVote\"", "\"Yes\"", "\"No\"", "\"Refrained\"", "\"HTMLPath\"" };
             string[] replaces = new string[] { "\"Список пропозицій\"", "\"Назва пропозиції\"", "\"Не голосували\"", "\"Так\"", "\"Ні\"", "\"Утримались\"", "\"Посилання\"" };
