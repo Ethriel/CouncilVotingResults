@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using OfficeOpenXml;
 using System.IO;
-using System.Security;
-using System.Runtime.InteropServices;
 using CouncilVouingResults.Classes;
 
 namespace HTMLNS
