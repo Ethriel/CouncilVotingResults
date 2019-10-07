@@ -54,6 +54,7 @@ namespace CouncilVouingResults
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
+                dialog.SelectedPath = GetFirstNotEmpty();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     LocPathVote = dialog.SelectedPath;
@@ -66,6 +67,7 @@ namespace CouncilVouingResults
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
+                dialog.SelectedPath = GetFirstNotEmpty();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     PathToXLSX = dialog.SelectedPath;
@@ -78,13 +80,9 @@ namespace CouncilVouingResults
         {
             try
             {
-                var Watch = Stopwatch.StartNew();
                 TableWork.SetParams(LocPathVote, textCriteriaVote.Text, textTableTitleVote.Text, textSessionNameVote.Text, PathToXLSX);
                 TableWork.Work();
-                Watch.Stop();
                 MessageBox.Show("Tables created!", "All OK");
-                labTimePassed.Visible = true;
-                labTimePassed.Text = $"Time passed: {Watch.ElapsedMilliseconds} ms";
                 TablesCreated = true;
                 if(!string.IsNullOrEmpty(PathToJSON))
                     butWriteToJson.Visible = true;
@@ -137,6 +135,7 @@ namespace CouncilVouingResults
         {
             using (FolderBrowserDialog dialog = new FolderBrowserDialog())
             {
+                dialog.SelectedPath = GetFirstNotEmpty();
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     PathToJSON = dialog.SelectedPath;
@@ -160,5 +159,18 @@ namespace CouncilVouingResults
                 MessageBox.Show("Error during creating readable JSON file: " + ex.Message, "Error");
             }
         }
+
+        private string GetFirstNotEmpty()
+        {
+            string[] paths = new string[] { LocPathVote, PathToXLSX, PathToJSON };
+            for (int i = 0; i < paths.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(paths[i]))
+                    return paths[i];
+            }
+            return string.Empty;
+        }
     }
+
+
 }

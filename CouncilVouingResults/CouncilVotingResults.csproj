@@ -54,6 +54,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\BulkRename.cs" />
+    <Compile Include="Classes\CreatorHelper.cs" />
     <Compile Include="Classes\JSONWork.cs" />
     <Compile Include="Classes\Resize.cs" />
     <Compile Include="Forms\BulkRenameForm.cs">

@@ -10,7 +10,7 @@ using System.Runtime.Serialization.Json;
 namespace CouncilVouingResults.Classes
 {
     [DataContract]
-    class Descision
+    public class Descision
     {
         [DataMember]
         public int ID { get; private set; }
@@ -53,10 +53,11 @@ namespace CouncilVouingResults.Classes
         }
     }
     [DataContract]
-    class Descisions
+    public class Descisions
     {
         [DataMember]
-        public List<Descision> DescisionsList { get; private set; }
+        List<Descision> DescisionsList { get; set; }
+        public int Count { get; private set; }
         [DataMember]
         public string Session { get; private set; }
         public Descisions()
@@ -72,6 +73,22 @@ namespace CouncilVouingResults.Classes
         public void AddDescision(int id, string descName, string yes, string no, string refrained, string didntVote, string htmlPath)
         {
             DescisionsList.Add(new Descision(id, descName, yes, no, refrained, didntVote, htmlPath));
+            Count = DescisionsList.Count;
+        }
+
+        public Descision this[int i]
+        {
+            get
+            {
+                if (i >= 0 && i < DescisionsList.Count)
+                    return DescisionsList[i];
+                else
+                    throw new Exception("Index out of bounds");
+            }
+            set
+            {
+                DescisionsList[i] = value;
+            }
         }
     }
     class JSON
